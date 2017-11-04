@@ -7,7 +7,7 @@ const Gift = props => {
 			Received from: {props.giftData.for_who}<br/>
 			Description: {props.giftData.description}<br/>
 			Occasion: {props.giftData.occasion}<br/>
-			<img src={props.giftData.photo} width="125" height="100"/>
+			<img alt="gift" src={props.giftData.photo} width="125" height="100"/>
 		</div>
 	);
 };

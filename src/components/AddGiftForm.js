@@ -128,7 +128,7 @@ class addGiftForm extends React.Component {
           onChange={this.handlePhotoChange}
          />
       </div>
-      <button type="submit" className="ui button" role="button">Submit</button>
+      <button type="submit" className="ui button" >Submit</button>
       <div className="ui hidden divider">
       </div>
     </div>

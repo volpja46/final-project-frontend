@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, NavLink } from 'react-router-dom'
+import { Route, withRouter } from 'react-router'
 import Profile from './components/Profile'
 import LoginForm from './components/LoginForm'
 import HomePageLayout from './components/HomePageLayout'
@@ -9,7 +9,7 @@ import './App.css';
 // import Authorized from "./components/Authorized";
 // const authorizedProfile = Authorized(Profile);
 
-const App = () => {
+const App = (props) => {
   return (
     <div>
       <Route exact path="/profile" component={Profile} />
@@ -19,4 +19,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default withRouter(App);

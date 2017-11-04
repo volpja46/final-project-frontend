@@ -1,11 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import AddGiftForm from './AddGiftForm'
-import GiftContainer from './GiftContainer'
-
 
 const Profile = (props) => {
-  console.log(props)
   return (
     <div>
     <h1>Welcome, {props.username}</h1>
@@ -13,6 +10,6 @@ const Profile = (props) => {
   </div>
   )
 }
-const mapStateToProps = (state) => ({ username: state.usersReducer.username, user_id:state.usersReducer.user_id   })
+const mapStateToProps = (state) => ({ username: state.usersReducer.username, user_id:state.usersReducer.user_id})
 
 export default connect(mapStateToProps)(Profile)

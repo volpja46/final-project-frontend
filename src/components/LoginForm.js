@@ -1,56 +1,36 @@
-// import React from 'react'
-// import { connect } from 'react-redux'
-// import { loginUser } from '../actions/user'
-//
-// class LoginForm extends React.Component {
-//   state = {
-//     username: "",
-//     password: ""
-//   }
-//
-//   handleUsernameChange = (event) => {
-//     this.setState({
-//       username: event.target.value
-//     })
-//   }
-//
-//   handlePasswordChange = (event) => {
-//     this.setState({
-//       password: event.target.value
-//     })
-//   }
-//
-//   handleLoginSubmit = (event) => {
-//     event.preventDefault()
-//     this.props.loginUser(this.state.username, this.state.password)
-//   }
-//
-//   render() {
-//
-//     return(
-//       <div>
-//       <center><h2>Please login</h2>
-//       <form onSubmit={this.handleLoginSubmit}>
-//         <input type="text" value={this.state.username} onChange={this.handleUsernameChange}></input><br/>
-//         <input type="password" value={this.state.password} onChange={this.handlePasswordChange}></input><br/>
-//         <button type="submit">Login</button>
-//       </form></center>
-//     </div>
-//     )
-//   }
-// }
-//
-// export default connect(null, { loginUser })(LoginForm)
-
-
 import React from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import {browserHistory} from 'react-router';
+import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
+import { loginUser } from '../actions/user'
 
 
 class LoginForm extends React.Component {
-  handleLogin = () => {
-    this.browserHistory.pushState(null, 'profile');
+    state = {
+      username: "",
+      password: ""
+    }
+
+      handleUsernameChange = (event) => {
+        this.setState({
+          username: event.target.value
+        })
+      }
+
+      handlePasswordChange = (event) => {
+        this.setState({
+          password: event.target.value
+        })
+      }
+
+      handleLogin = () => {
+        this.props.loginUser(this.state.username, this.state.password)
+        console.log(this.props)
+        this.redirect()
+  }
+
+  redirect = () => {
+    this.props.history.push("/profile")
   }
 
 render(){
@@ -73,20 +53,22 @@ render(){
         style={{ height: '100%' }}
         verticalAlign='middle'
       >
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{ maxWidth: 300 }}>
           <Header as='h2' color='teal' textAlign='center'>
             <Image src='/logo.png' />
-            {' '}Log-in to your account
+            <center>Login to your account</center>
           </Header>
           <Form size='large'>
             <Segment stacked>
               <Form.Input
+                onChange={this.handleUsernameChange}
                 fluid
                 icon='user'
                 iconPosition='left'
                 placeholder='Username'
               />
               <Form.Input
+                onChange={this.handlePasswordChange}
                 fluid
                 icon='lock'
                 iconPosition='left'
@@ -98,7 +80,7 @@ render(){
             </Segment>
           </Form>
           <Message>
-            Don't have an account yet? <a href='#'> Sign Up Here!</a>
+          Don't have an account yet?   <center> <a href='signup'> Sign Up Here!</a></center>
           </Message>
         </Grid.Column>
       </Grid>
@@ -107,4 +89,4 @@ render(){
 }
 }
 
-export default LoginForm
+export default withRouter(connect(null, { loginUser })(LoginForm))

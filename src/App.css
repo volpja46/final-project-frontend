@@ -1,5 +1,16 @@
 .App {
-  text-align: center;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-direction: column !important;
+}
+
+#navbar {
+position: fixed;
+top: 10px;
+left: 7px;
+padding: 5px;
+  width: 100%;
 }
 
 .App-logo {

@@ -14,9 +14,24 @@ export function loginUser(username, password) {
 }
 
 export function setCurrentUser(userData) {
-  console.log(userData)
   return {
     type: "SET_CURRENT_USER",
     payload: userData
+  }
+}
+
+
+export function signUpUser(username, password) {
+  return (dispatch) => {
+    fetch('http://localhost:3000/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ user: {username, password} })
+    })
+    .then(response => response.json())
+    .then(userData => dispatch(setCurrentUser(userData)))
   }
 }

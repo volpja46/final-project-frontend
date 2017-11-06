@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button, Container, Divider, Grid, Header, Icon, Image, List, Menu, Segment, Visibility,} from 'semantic-ui-react'
+import {Button, Container, Header, Icon, Menu, Segment, Visibility,} from 'semantic-ui-react'
 
 const FixedMenu = () => (
   <Menu fixed='top' size='large'>
@@ -20,7 +20,6 @@ const FixedMenu = () => (
 export default class HomePageLayout extends Component {
   constructor (props){
     super(props)
-    console.log(this.props)
     this.state = {
     }
   }
@@ -49,13 +48,12 @@ export default class HomePageLayout extends Component {
           once={false}
         >
           <Segment
-            inverted
             textAlign='center'
             style={{ minHeight: 700, padding: '1em 0em' }}
             vertical
           >
             <Container>
-              <Menu inverted pointing secondary size='large'>
+              <Menu color={"teal"} inverted widths={3}>
                 <Menu.Item as='a'
                  active>Home</Menu.Item>
                 <Menu.Item position='right'>
@@ -75,11 +73,11 @@ export default class HomePageLayout extends Component {
               />
               <Header
                 as='h2'
-                content='Keep track of your gits'
+                content='Keep track of your gifts'
                 inverted
                 style={{ fontSize: '1.7em', fontWeight: 'normal' }}
               />
-              <Button onClick={this.handleSignUp} rimary size='huge' color='teal'>
+              <Button onClick={this.handleSignUp} size='huge' color='teal'>
                 Get Started
                 <Icon name='right arrow' />
               </Button>

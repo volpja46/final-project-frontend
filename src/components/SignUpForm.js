@@ -2,10 +2,10 @@ import React from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import { loginUser } from '../actions/user'
+import { signUpUser } from '../actions/user'
 
 
-class LoginForm extends React.Component {
+class SignUpForm extends React.Component {
     state = {
       username: "",
       password: ""
@@ -24,8 +24,7 @@ class LoginForm extends React.Component {
       }
 
       handleLogin = () => {
-        this.props.loginUser(this.state.username, this.state.password)
-        console.log(this.props)
+        this.props.signUpUser(this.state.username, this.state.password)
         this.redirect()
   }
 
@@ -35,7 +34,8 @@ class LoginForm extends React.Component {
 
 render(){
   return (
-    <div className='login-form' style={{ backgroundColor: 'black'}}>
+
+    <div className='signup-form' style={{backgroundColor:'black'}}>
       {/*
         Heads up! The styles below are necessary for the correct render of this example.
         You can do same with CSS, the main idea is that all the elements up to the `Grid`
@@ -50,42 +50,42 @@ render(){
       `}</style>
       <Grid
         textAlign='center'
-        style={{ height: '100%', marginTop:"3em"}}
+        style={{ height: '100%', marginTop: '6em'}}
         verticalAlign='middle'
       >
-        <Grid.Column style={{ width: 325, height:500 }}>
+        <Grid.Column style={{ width: 350, height:500}}>
           <Header as='h1' color='teal' textAlign='center'>
             <Image src='/logo.png' />
-            <center>Login to your account</center>
+            <center>Please create an account</center>
           </Header>
-          <Form size='huge'>
-            <Segment padded>
+          <Form size='large'>
+            <Segment stacked>
               <Form.Input
                 onChange={this.handleUsernameChange}
-                fluid
                 icon='user'
                 iconPosition='left'
-                placeholder='Username'
+                label='Select a username'
               />
               <Form.Input
                 onChange={this.handlePasswordChange}
                 fluid
                 icon='lock'
                 iconPosition='left'
-                placeholder='Password'
+                label='Select a password'
                 type='password'
               />
-              <Button onClick={this.handleLogin} color='teal' fluid size='large'>Login</Button>
+
+              <Button onClick={this.handleLogin} color='teal' fluid size='large'>Create account</Button>
             </Segment>
           </Form>
           <Message>
-          Don't have an account yet?   <center> <a href='signup'> Sign Up Here!</a></center>
+          Already have an account?   <center> <a href='login'>Login here!</a></center>
           </Message>
         </Grid.Column>
       </Grid>
-  </div>
+    </div>
   )
 }
 }
 
-export default withRouter(connect(null, { loginUser })(LoginForm))
+export default withRouter(connect(null, { signUpUser })(SignUpForm))

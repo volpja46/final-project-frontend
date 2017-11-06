@@ -2,13 +2,13 @@ import React from 'react';
 
 const Gift = props => {
 	return (
-		<div>
-			Name: {props.giftData.name}<br/>
-			Received from: {props.giftData.for_who}<br/>
-			Description: {props.giftData.description}<br/>
-			Occasion: {props.giftData.occasion}<br/>
-			<img alt="gift" src={props.giftData.photo} width="125" height="100"/>
-		</div>
+			<tr>
+				<td>{props.giftData.date}</td>
+				<td>{props.giftData.name}</td>
+				<td>{props.giftData.occasion}</td>
+				<td>{props.giftData.for_who}</td>
+				<td>{props.giftData.description}</td>
+		</tr>
 	);
 };
 

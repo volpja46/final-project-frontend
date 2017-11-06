@@ -1,5 +1,9 @@
 import React from 'react'
 import GiftContainer from './GiftContainer'
+import Search from './Search';
+import {Button, Header, Segment, Form, Grid} from 'semantic-ui-react'
+import '../App.css'
+
 
 
 class addGiftForm extends React.Component {
@@ -9,10 +13,12 @@ class addGiftForm extends React.Component {
       gifts: [],
       user_id: props.user_id,
       name: '',
+      date: '',
       description: '',
       photo: '',
       for_who: '',
-      occasion: ""
+      occasion: "",
+      searchTerm: ""
     }
   }
 
@@ -29,6 +35,12 @@ class addGiftForm extends React.Component {
   				}));
   	};
 
+    handleSearchChange = (event) => {
+  		this.setState({
+  			searchTerm: event.target.value.toLowerCase()
+  		});
+  	}
+
   handleNameChange = (event) => {
     this.setState({
       name: event.target.value
@@ -41,9 +53,9 @@ class addGiftForm extends React.Component {
     })
   }
 
-  handlePhotoChange = (event) => {
+  handleDateChange = (event) => {
     this.setState({
-      photo: event.target.value
+      date: event.target.value
     })
   }
 
@@ -60,12 +72,11 @@ class addGiftForm extends React.Component {
   }
 
   handleSubmit = (event) => {
-    console.log(this.props)
     event.preventDefault()
     let newGift = {
     name: this.state.name,
     description: this.state.description,
-    photo: this.state.photo,
+    date: this.state.date,
     user_id: this.props.user_id,
     for_who: this.state.for_who,
     occasion: this.state.occasion
@@ -84,56 +95,56 @@ class addGiftForm extends React.Component {
     .then(resp =>
       this.setState((prevState, curProps) => {
         return {gifts: [...prevState.gifts, resp]}
-      })).then(this.giftsForCurrentUser())
+      }))
 }
-
-  giftsForCurrentUser = () => {
-    console.log(this.props)
-  }
 
   render() {
     const giftsForCurrentUser = this.state.gifts.filter(gift => {
-    			return gift.user_id === this.props.user_id
+    			return gift.user_id === this.props.user_id && gift.description.toLowerCase().includes(this.state.searchTerm)  || gift.for_who.toLowerCase().includes(this.state.searchTerm)
+          || gift.occasion.toLowerCase().includes(this.state.searchTerm)
+          || gift.name.toLowerCase().includes(this.state.searchTerm) 
     		});
+
      return(
-      <div>
-        <GiftContainer gifts={giftsForCurrentUser}/>
-        <h3>Add a gift you received</h3>
-      <form onSubmit={this.handleSubmit} className="ui form">
-     <div className="equal fields">
-      <div className="field">
-        <label>Name</label>
-        <input
-          onChange ={this.handleNameChange}
+       <div>
+         <Search
+          searchTerm={this.state.searchTerm}
+          handleChange={this.handleSearchChange}
         />
-      </div>
-      <div className="field">
-        <label>Description</label>
-        <input
-        onChange={this.handleDescriptionChange}/>
-      </div>
-      <div className="field">
-        <label>Received from</label>
-        <input
-        onChange={this.handleFromWhoChange}/>
-      </div>
-      <div className="field">
-        <label>Occasion</label>
-        <input
-        onChange={this.handleOccasionChange}/>
-      </div>
-      <div className="field">
-        <label>Upload a picture</label>
-        <input
-          onChange={this.handlePhotoChange}
-         />
-      </div>
-      <button type="submit" className="ui button" >Submit</button>
-      <div className="ui hidden divider">
-      </div>
-    </div>
-  </form>
-  </div>
+        <div class="gifts-table">
+          <Grid
+            style={{ height: '100%', marginTop: '1em', marginLeft:'0em'}}
+            verticalAlign='middle'
+            textAlign='center'>
+    <GiftContainer gifts={giftsForCurrentUser}/>
+  </Grid>
+          </div>
+    <div class="add-gift" style={{color:'black'}}>
+      <Grid
+        style={{ height: '100%', marginTop: '1em', color:'black'}}
+        verticalAlign='middle'
+        textAlign='center'>
+   <Segment padded color='black' centered >
+  <Header as='h2' color='teal' content= "Add a gift to your collection" className="fluid" icon='gift'>
+</Header>
+  <Form style={{color:'black'}} onSubmit={this.handleSubmit} >
+    <Form.Group stacked={2}>
+      <Form.Input onChange ={this.handleNameChange}color="teal" label='Gift' placeholder='Gift' />
+      <Form.Input  onChange={this.handleFromWhoChange} label='Received from' placeholder='Received from' /><br/>
+    </Form.Group>
+    <Form.Group unstackable={2}>
+      <Form.Input   onChange={this.handleOccasionChange} label='Occasion' placeholder='Occasion' />
+      <Form.Input  onChange={this.handleDateChange} label='Date' placeholder='ex: 2018-01-30' />
+    </Form.Group>
+    <Form.Group widths='equal'>
+      <Form.TextArea   onChange={this.handleDescriptionChange} type="text area" label='Description' placeholder='Description' />
+    </Form.Group>
+<center><Button type="submit" color="teal" className="ui black fluid button" >Submit</Button> </center>
+</Form>
+</Segment>
+</Grid>
+</div>
+</div>
     )
   }
 }

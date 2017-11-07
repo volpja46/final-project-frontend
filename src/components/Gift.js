@@ -8,6 +8,7 @@ const Gift = props => {
 				<td>{props.giftData.occasion}</td>
 				<td>{props.giftData.for_who}</td>
 				<td>{props.giftData.description}</td>
+				<button id={props.key}>x</button>
 		</tr>
 	);
 };

@@ -1,7 +1,7 @@
 import React from 'react'
 import GiftContainer from './GiftContainer'
 import Search from './Search';
-import {Button, Header, Segment, Form, Grid} from 'semantic-ui-react'
+import {Button, Header, Segment, Image, Form, Grid, Icon, Modal} from 'semantic-ui-react'
 import '../App.css'
 
 
@@ -22,7 +22,7 @@ class addGiftForm extends React.Component {
     }
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.fetchGifts()
     }
 
@@ -102,7 +102,7 @@ class addGiftForm extends React.Component {
     const giftsForCurrentUser = this.state.gifts.filter(gift => {
     			return gift.user_id === this.props.user_id && gift.description.toLowerCase().includes(this.state.searchTerm)  || gift.for_who.toLowerCase().includes(this.state.searchTerm)
           || gift.occasion.toLowerCase().includes(this.state.searchTerm)
-          || gift.name.toLowerCase().includes(this.state.searchTerm) 
+          || gift.name.toLowerCase().includes(this.state.searchTerm)
     		});
 
      return(
@@ -111,40 +111,45 @@ class addGiftForm extends React.Component {
           searchTerm={this.state.searchTerm}
           handleChange={this.handleSearchChange}
         />
-        <div class="gifts-table">
           <Grid
-            style={{ height: '100%', marginTop: '1em', marginLeft:'0em'}}
+            style={{ height: '100%', marginTop: '1em', marginLeft:'0.43em'}}
             verticalAlign='middle'
             textAlign='center'>
     <GiftContainer gifts={giftsForCurrentUser}/>
   </Grid>
-          </div>
-    <div class="add-gift" style={{color:'black'}}>
-      <Grid
-        style={{ height: '100%', marginTop: '1em', color:'black'}}
-        verticalAlign='middle'
-        textAlign='center'>
-   <Segment padded color='black' centered >
-  <Header as='h2' color='teal' content= "Add a gift to your collection" className="fluid" icon='gift'>
+
+          <Modal size="small" trigger={<Button size='big' style={{marginTop:'3em', marginBottom:"3em"}}  color="teal">Add a new gift to your collection <Icon name='gift'/></Button>}
+          basic closeIcon style>
+    <Header icon='gift' align="center" size="huge" color="teal" content='Log a new gift' />
+      <Modal.Content>
+        <Grid
+      style={{ height: '100%', marginTop: '1em', color:'black'}}
+      verticalAlign='middle'
+      textAlign='center'>
+ <Segment padded color='black' centered >
+<Header as='h2' color='teal' content= "Add a gift to your collection" className="fluid" icon='gift'>
 </Header>
-  <Form style={{color:'black'}} onSubmit={this.handleSubmit} >
-    <Form.Group stacked={2}>
-      <Form.Input onChange ={this.handleNameChange}color="teal" label='Gift' placeholder='Gift' />
-      <Form.Input  onChange={this.handleFromWhoChange} label='Received from' placeholder='Received from' /><br/>
-    </Form.Group>
-    <Form.Group unstackable={2}>
-      <Form.Input   onChange={this.handleOccasionChange} label='Occasion' placeholder='Occasion' />
-      <Form.Input  onChange={this.handleDateChange} label='Date' placeholder='ex: 2018-01-30' />
-    </Form.Group>
-    <Form.Group widths='equal'>
-      <Form.TextArea   onChange={this.handleDescriptionChange} type="text area" label='Description' placeholder='Description' />
-    </Form.Group>
+<Form style={{color:'black'}} onSubmit={this.handleSubmit} >
+  <Form.Group stacked={2}>
+    <Form.Input onChange ={this.handleNameChange}color="teal" label='Gift' placeholder='Gift' />
+    <Form.Input  onChange={this.handleFromWhoChange} label='Received from' placeholder='Received from' /><br/>
+  </Form.Group>
+  <Form.Group unstackable={2}>
+    <Form.Input   onChange={this.handleOccasionChange} label='Occasion' placeholder='Occasion' />
+    <Form.Input  onChange={this.handleDateChange} label='Date' placeholder='ex: 2018-01-30' />
+  </Form.Group>
+  <Form.Group widths='equal'>
+    <Form.TextArea   onChange={this.handleDescriptionChange} type="text area" label='Description' placeholder='Description' />
+  </Form.Group>
+
 <center><Button type="submit" color="teal" className="ui black fluid button" >Submit</Button> </center>
 </Form>
 </Segment>
 </Grid>
+  </Modal.Content>
+</Modal>
 </div>
-</div>
+
     )
   }
 }

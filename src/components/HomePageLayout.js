@@ -63,13 +63,13 @@ export default class HomePageLayout extends Component {
               </Menu>
             </Container>
 
-            <Container text>
+            <Container centered text>
               <Header
                 as='h1'
                 color='teal'
-                content='Gift Lister'
+                content='Gift Organizer'
                 inverted
-                style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
+                style={{ color:'black', fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em', textAlign:'center' }}
               />
               <Header
                 as='h2'

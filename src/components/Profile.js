@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import AddGiftForm from './AddGiftForm'
 import Navbar from './Navbar'
+import EventContainer from './EventContainer'
+import AddEventForm from './AddEventForm'
 
 const Profile = (props) => {
   return (
@@ -9,6 +11,7 @@ const Profile = (props) => {
       <Navbar/>
     <h1 ><center>Welcome, {props.username}</center></h1>
     <AddGiftForm user_id={props.user_id}/>
+    <AddEventForm user_id={props.user_id}/>
   </div>
   )
 }

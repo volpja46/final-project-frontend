@@ -7,7 +7,7 @@ const Search = props => {
 		<div className="ui aligned icon input">
 			<Grid
         textAlign='center'
-        style={{ height: '100%', marginLeft:'33em', marginRight:'30em', marginTop:'1em', marginBottom:'0.5em'}}
+        style={{ height: '100%', marginLeft:'25em', marginRight:'23em', marginTop:'1em', marginBottom:'0.5em'}}
         verticalAlign='middle'
       >
 			<input
@@ -16,7 +16,7 @@ const Search = props => {
 				value={props.searchTerm}
 				onChange={props.handleChange}
 			/>
-			<i className="circular search link icon" />
+			<i style={{color:'white', marginTop:'0.25em'}}className="circular search link icon" />
 		</Grid>
 		</div>
 	);

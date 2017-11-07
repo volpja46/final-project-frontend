@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
 
 render(){
   return (
-    <div className='login-form' style={{ backgroundColor: 'black'}}>
+    <div padded="very" className='login-form' style={{ backgroundColor: 'black'}}>
       {/*
         Heads up! The styles below are necessary for the correct render of this example.
         You can do same with CSS, the main idea is that all the elements up to the `Grid`
@@ -45,20 +45,20 @@ render(){
         body > div,
         body > div > div,
         body > div > div > div.login-form {
-          height: 100%;
+          height: 100%; color:black
         }
       `}</style>
       <Grid
         textAlign='center'
-        style={{ height: '100%', marginTop:"3em"}}
+        style={{ height: '100%', marginTop:"0.65em"}}
         verticalAlign='middle'
       >
-        <Grid.Column style={{ width: 325, height:500 }}>
+        <Grid.Column style={{ width: 285, height:355, color:'black' }}>
           <Header as='h1' color='teal' textAlign='center'>
             <Image src='/logo.png' />
             <center>Login to your account</center>
           </Header>
-          <Form size='huge'>
+          <Form size='massive'>
             <Segment padded>
               <Form.Input
                 onChange={this.handleUsernameChange}

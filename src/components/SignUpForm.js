@@ -5,27 +5,45 @@ import { connect } from 'react-redux'
 import { signUpUser } from '../actions/user'
 
 
-class SignUpForm extends React.Component {
-    state = {
+class SignUpForm extends React.Component{
+  constructor(){
+    super()
+    this.state = {
       username: "",
       password: ""
     }
+  }
 
-      handleUsernameChange = (event) => {
-        this.setState({
-          username: event.target.value
-        })
-      }
+  handleUsernameChange = (event)=>{
+    this.setState({
+      username: event.target.value
+    })
+  }
 
-      handlePasswordChange = (event) => {
-        this.setState({
-          password: event.target.value
-        })
-      }
+  handlePasswordChange = (event) =>{
+    this.setState({
+      password: event.target.value
+    })
+  }
 
-      handleLogin = () => {
-        this.props.signUpUser(this.state.username, this.state.password)
-        this.redirect()
+  handleLogin = (event) => {
+    event.preventDefault()
+    let newUser = {
+      username: this.state.username,
+      password: this.state.password
+    }
+
+    let userCreateParams = {
+      method: 'POST',
+      headers: {
+        'Accept':'application/json',
+        'Content-Type':'application/json'},
+      body: JSON.stringify(newUser)
+    }
+
+    fetch(`http://localhost:3000/api/v1/users`, userCreateParams)
+      .then(resp=>resp.json())
+      .then(resp => console.log(resp))
   }
 
   redirect = () => {

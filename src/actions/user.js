@@ -13,17 +13,9 @@ export function loginUser(username, password) {
   }
 }
 
-export function setCurrentUser(userData) {
-  return {
-    type: "SET_CURRENT_USER",
-    payload: userData
-  }
-}
-
-
 export function signUpUser(username, password) {
   return (dispatch) => {
-    fetch('http://localhost:3000/api/v1/users', {
+    fetch('http://localhost:3000/api/v1/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,5 +25,12 @@ export function signUpUser(username, password) {
     })
     .then(response => response.json())
     .then(userData => dispatch(setCurrentUser(userData)))
+  }
+}
+
+export function setCurrentUser(userData) {
+  return {
+    type: "SET_CURRENT_USER",
+    payload: userData
   }
 }

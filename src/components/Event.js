@@ -5,8 +5,9 @@ import React from 'react';
 
 const Event = props => {
 	return (
+
 			<tr>
-				<td>{props.eventData.type}</td>
+				<td>{props.eventData.typeOfCelebration}</td>
 				<td>{props.eventData.date}</td>
 				<td>{props.eventData.name}</td>
 		</tr>

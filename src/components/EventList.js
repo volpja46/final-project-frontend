@@ -5,7 +5,7 @@ import '../App.css'
 
 
 const EventList = (props) => {
-
+  
   const eventTable = props.events.map((event, index)=> <Event key= {event.id} eventData= {event}/>)
 
 return (

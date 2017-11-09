@@ -70,7 +70,7 @@ const FixedMenu = () => (
                   <Button color='teal' onClick={this.handleEvents} as='a' style={{ marginLeft: '0.75em' }}>Upcoming Celebrations</Button>
                 </Menu.Item>
 
-                <Menu.Item position right>
+                <Menu.Item>
                 <Button color='teal' onClick={this.handleLogOut} as='a' style={{ marginLeft: '0.75em' }}>Log out</Button>
                 </Menu.Item>
 

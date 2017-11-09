@@ -1,9 +1,13 @@
 import React from 'react'
-import EventContainer from './EventContainer'
-import {Button, Header, Segment, Form, Grid, Icon, Modal} from 'semantic-ui-react'
+import EventList from './EventList'
+import {Button, Header, Segment, Form, Grid, Modal} from 'semantic-ui-react'
 import '../App.css'
 import { connect } from 'react-redux'
 import Navbar from './Navbar'
+import { getEvents } from '../actions/events'
+import { addEvent } from '../actions/events'
+import { removeTheEvent } from '../actions/events'
+// import { editTheEvent } from '../actions/events'
 
 
 class AddEventForm extends React.Component {
@@ -14,22 +18,13 @@ class AddEventForm extends React.Component {
       user_id: props.user_id,
       name: '',
       date: '',
-      type: ''
+      type_of_celebration: ''
     }
   }
 
   componentDidMount = () => {
-    this.fetchEvents()
+    this.props.getEvents()
     }
-
-    fetchEvents = () => {
-      fetch('http://localhost:3000/api/v1/events')
-  			.then(res => res.json())
-        .then(res =>
-          this.setState({
-          events: res
-          }));
-  	};
 
 
   handleNameChange = (event) => {
@@ -46,7 +41,7 @@ class AddEventForm extends React.Component {
 
   handleTypeChange = (event) => {
     this.setState ({
-      type: event.target.value
+      type_of_celebration: event.target.value
     })
   }
 
@@ -56,27 +51,14 @@ class AddEventForm extends React.Component {
     name: this.state.name,
     date: this.state.date,
     user_id: this.props.user_id,
+    type_of_celebration: this.state.type_of_celebration
   }
-
-  let eventCreateParams = {
-    method: 'POST',
-    headers: {
-      'Accept':'application/json',
-      'Content-Type':'application/json'},
-    body: JSON.stringify(newEvent)
+    this.props.addEvent(newEvent)
   }
-
-  fetch('http://localhost:3000/api/v1/events', eventCreateParams)
-    .then(resp=>resp.json())
-    .then(resp =>
-      this.setState((prevState, curProps) => {
-        return {events: [...prevState.events, resp]}
-      }))
-}
 
   render() {
-    const eventsForCurrentUser = this.state.events.filter(event => {
-    			return event.user_id === this.props.user_id
+    const eventsForCurrentUser = this.props.events.filter(event => {
+      return this.props.user_id === event.user_id
     		});
 
      return(
@@ -87,11 +69,11 @@ class AddEventForm extends React.Component {
             style={{ height: '100%', marginTop: '10em', marginLeft:'0.44em'}}
             verticalAlign='middle'
             textAlign='center'>
-    <EventContainer events={eventsForCurrentUser}/>
+    <EventList events={eventsForCurrentUser}/>
         </Grid>
             </div>
           <Modal size="large" trigger={<Button size='big' style={{marginTop:'3em', marginBottom:"3em"}}  color="teal">Add a new event</Button>}
-          basic closeIcon style>
+          basic closeIcon>
     <Header align="center" color="teal" size="huge" />
       <Modal.Content>
         <Grid
@@ -121,6 +103,18 @@ class AddEventForm extends React.Component {
     )
   }
 }
-const mapStateToProps = (state) => ({ username: state.usersReducer.username, user_id:state.usersReducer.user_id})
 
-export default connect(mapStateToProps)(AddEventForm)
+const mapStateToProps = (state) => {
+  return {
+    events: state.events.events,
+    username: state.users.username,
+    user_id: state.users.user_id
+  };
+};
+
+const mapDispatchToProps = {
+  getEvents: getEvents,
+  addEvent: addEvent
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddEventForm)

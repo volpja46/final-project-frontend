@@ -5,7 +5,7 @@ import LoginForm from './components/LoginForm'
 import HomePageLayout from './components/HomePageLayout'
 import SignUpForm from './components/SignUpForm'
 import './App.css';
-import AddEventForm from './components/AddEventForm'
+import EventContainer from './components/EventContainer'
 // import AddGiftForm from './components/AddGiftForm'
 // import Authorized from "./components/Authorized";
 // const authorizedProfile = Authorized(Profile);
@@ -17,7 +17,7 @@ const App = (props) => {
       <Route exact path="/" component={HomePageLayout} />
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/signup" component={SignUpForm} />
-      <Route exact path="/events" component={AddEventForm} />
+      <Route exact path="/events" component={EventContainer} />
     </div>
   )
 }

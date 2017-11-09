@@ -34,3 +34,30 @@ export function addEvent(newEvent){
      payload: eventsData
    }
  }
+
+
+ export function removeTheEvent(eventId){
+   return (dispatch) => {
+    fetch(`http://localhost:3000/api/v1/events/${eventId}`, {
+      method: 'delete',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+     body: JSON.stringify({
+       id: eventId
+     })
+   }).then(res => res.json())
+     .then(res => {
+       let deletedEventId = res.deleted_event_id
+       dispatch(removeEvent(deletedEventId))
+     })
+    }
+  }
+
+  export function removeEvent(deletedEventId) {
+    return {
+      type: "REMOVE_EVENT",
+      payload: deletedEventId
+    }
+  }

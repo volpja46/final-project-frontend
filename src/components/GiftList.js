@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 const GiftList = (props) => {
 
-   const giftTable = props.gifts.map((gift, index)=> <Gift key={index} id={gift.id} giftData= {gift} removeGift={props.removeGift} editGift={props.editGift}/>)
+   const giftTable = props.gifts.map((gift, index)=> <Gift key={index} id={gift.id} giftData= {gift} removeGift={props.removeGift}/>)
 
 return (
   props.gifts.length > 0 ?

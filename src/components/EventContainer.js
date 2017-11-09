@@ -15,7 +15,6 @@ class EventContainer extends React.Component {
   constructor (props){
     super(props)
     this.state = {
-      events: [],
       user_id: props.user_id,
       name: '',
       date: '',

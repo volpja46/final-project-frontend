@@ -2,11 +2,12 @@ import React from 'react';
 import Event from './Event';
 import { Table, Container } from 'semantic-ui-react'
 import '../App.css'
+import { connect } from 'react-redux'
 
 
 const EventList = (props) => {
 
-  const eventTable = props.events.map((event, index)=> <Event key= {event.id} eventData= {event} handleRemove={props.handleRemove}/>)
+  const eventTable = props.events.map((event, index)=> <Event key={index} id={event.id} eventData= {event} handleRemove={props.handleRemove}/>)
 
 return (
   props.events.length > 0 ?
@@ -27,4 +28,11 @@ return (
   : null
 )
 }
-export default EventList;
+
+const mapStateToProps = (state) => {
+  return {
+    events: state.events.events
+  };
+};
+
+export default connect(mapStateToProps)(EventList);

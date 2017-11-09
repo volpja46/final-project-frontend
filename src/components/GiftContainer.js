@@ -85,7 +85,6 @@ class GiftContainer extends React.Component {
   }
 
   render() {
-    console.log('rerender')
     const giftsForCurrentUser = this.props.gifts.filter(gift => {
     			return this.props.user_id === gift.user_id && gift.description.toLowerCase().includes(this.state.searchTerm)
     		});
@@ -100,7 +99,7 @@ class GiftContainer extends React.Component {
             style={{ height: '100%', marginTop: '1em', marginLeft:'0.43em'}}
                 verticalAlign='middle'
                 textAlign='center'>
-        <GiftList gifts={giftsForCurrentUser} removeGift={this.handleRemove} editGift={this.handleEdit}/>
+        <GiftList gifts={giftsForCurrentUser} removeGift={this.handleRemove} />
         </Grid>
         <GiftModal handleNameChange={this.handleNameChange}
             handleDescriptionChange={this.handleDescriptionChange}

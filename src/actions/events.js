@@ -61,3 +61,23 @@ export function addEvent(newEvent){
       payload: deletedEventId
     }
   }
+
+  export function editTheEvent(finalEditedEvent) {
+    return (dispatch) => {
+     fetch(`http://localhost:3000/api/v1/events/${finalEditedEvent.id}`, {
+       method: 'PATCH',
+       headers: {
+         Accept: 'application/json',
+         'Content-Type': 'application/json'
+       },
+     body: JSON.stringify(finalEditedEvent)
+      }).then(res => res.json())
+        .then(editedEvent => dispatch(editEvent(editedEvent)))
+      }
+    }
+      export function editEvent(editedEvent) {
+        return {
+          type: "EDIT_EVENT",
+          payload: editedEvent
+        }
+      }

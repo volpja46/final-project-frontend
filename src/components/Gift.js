@@ -8,12 +8,12 @@ class Gift extends React.Component {
 		super(props)
 		this.state = {
 			user_id: this.props.user_id,
-			name: '',
-			date: '',
-			description: '',
+			name: this.props.giftData.name,
+			date: this.props.giftData.date,
+			description:this.props.giftData.description,
 			photo: '',
-			for_who: '',
-			occasion: "",
+			for_who: this.props.giftData.for_who,
+			occasion: this.props.giftData.occasion
 		}
 	}
 
@@ -65,7 +65,6 @@ class Gift extends React.Component {
      this.props.editTheGift(finalEditedGift)
    }
 
-
 	render(){
 	return (
 			<tr>
@@ -77,7 +76,7 @@ class Gift extends React.Component {
 				<td>
 					<Button size="medium" style={{color:'black', width:'7.6em', marginBottom:'.20em'}} id={this.props.id}  onClick={this.props.removeGift}>delete gift</Button>
 					<Modal  style={{display: 'block'}} size="small" trigger={<Button size="medium" style={{color:'black', width:'7.6em'}} id={this.props.id} >edit gift</Button>}
-					closeIcon>
+					closeIcon basic>
 					<Header icon='gift' align="center" size="huge" color="teal" content='Update your gift' />
 					<Modal.Content>
 					<Grid
@@ -87,15 +86,15 @@ class Gift extends React.Component {
 					<Segment padded  centered >
 					<Form  onSubmit={this.props.handleSubmit}>
 					<Form.Group stacked={2}>
-						<Form.Input onChange ={this.handleNameChange}  color="teal" label='Gift'  />
-						<Form.Input  onChange={this.handleFromWhoChange} label='Received from'  /><br/>
+						<Form.Input onChange ={this.handleNameChange} value={this.state.name}  color="teal" label='Gift'  />
+						<Form.Input onChange={this.handleFromWhoChange} value={this.state.for_who} label='Received from'  /><br/>
 					</Form.Group>
 					<Form.Group stackable={2}>
-						<Form.Input   onChange={this.handleOccasionChange}  label='Occasion' />
-						<Form.Input  onChange={this.handleDateChange} label='Date' placeholder='ex: 2018-01-30' />
+						<Form.Input   onChange={this.handleOccasionChange} value={this.state.occasion} label='Occasion' />
+						<Form.Input  onChange={this.handleDateChange} value={this.state.date} label='Date' placeholder='ex: 2018-01-30' />
 					</Form.Group>
 					<Form.Group widths='equal'>
-						<Form.TextArea   onChange={this.handleDescriptionChange} type="text area" label='Description'  />
+						<Form.TextArea   onChange={this.handleDescriptionChange} value={this.state.description} type="text area" label='Description'  />
 					</Form.Group>
 					<center><Button id={this.props.id}  onClick={this.handleEdit} type="submit" color="teal" className="ui black fluid button">Submit</Button> </center>
 					</Form>
@@ -112,7 +111,7 @@ class Gift extends React.Component {
 const mapStateToProps = (state) => {
   return {
     gifts: state.gifts.gifts,
-		user_id: state.users.user_id,
+		user_id: state.users.user_id
   };
 };
 

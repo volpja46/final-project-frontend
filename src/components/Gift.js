@@ -1,11 +1,70 @@
 import React from 'react';
 import {Button, Header, Segment, Form, Grid, Modal} from 'semantic-ui-react'
-import GiftModal from './GiftModal'
+import { editTheGift } from '../actions/gifts'
+import { connect } from 'react-redux'
 
 class Gift extends React.Component {
-	constructor(props){
+	constructor (props){
 		super(props)
+		this.state = {
+			user_id: this.props.user_id,
+			name: '',
+			date: '',
+			description: '',
+			photo: '',
+			for_who: '',
+			occasion: "",
+		}
 	}
+
+	handleNameChange = (event) => {
+		this.setState({
+			name: event.target.value
+		})
+	}
+
+	handleDescriptionChange = (event) => {
+		this.setState({
+			description: event.target.value
+		})
+	}
+
+	handleDateChange = (event) => {
+		this.setState({
+			date: event.target.value
+		})
+	}
+
+	handleFromWhoChange = (event) => {
+		this.setState ({
+			for_who: event.target.value
+		})
+	}
+
+	handleOccasionChange = (event) => {
+		this.setState ({
+			occasion: event.target.value
+		})
+	}
+
+	handleEdit = (event) => {
+    let giftId = parseInt(event.target.id)
+    let editedGift = this.props.gifts.find((gift)=>{
+        return gift.id === giftId
+     })
+     let finalEditedGift = {
+       id: editedGift.id,
+       name: this.state.name,
+       occasion:this.state.occasion,
+       date:this.state.date,
+       for_who:this.state.for_who,
+       description:this.state.description,
+       photo: this.state.photo,
+       user_id: this.props.user_id
+       }
+     this.props.editTheGift(finalEditedGift)
+   }
+
 
 	render(){
 	return (
@@ -28,17 +87,17 @@ class Gift extends React.Component {
 					<Segment padded  centered >
 					<Form  onSubmit={this.props.handleSubmit}>
 					<Form.Group stacked={2}>
-						<Form.Input onChange ={this.props.handleNameChange}  color="teal" label='Gift'  />
-						<Form.Input  onChange={this.props.handleFromWhoChange} label='Received from'  /><br/>
+						<Form.Input onChange ={this.handleNameChange}  color="teal" label='Gift'  />
+						<Form.Input  onChange={this.handleFromWhoChange} label='Received from'  /><br/>
 					</Form.Group>
 					<Form.Group stackable={2}>
-						<Form.Input   onChange={this.props.handleOccasionChange}  label='Occasion' />
-						<Form.Input  onChange={this.props.handleDateChange} label='Date' placeholder='ex: 2018-01-30' />
+						<Form.Input   onChange={this.handleOccasionChange}  label='Occasion' />
+						<Form.Input  onChange={this.handleDateChange} label='Date' placeholder='ex: 2018-01-30' />
 					</Form.Group>
 					<Form.Group widths='equal'>
-						<Form.TextArea   onChange={this.props.handleDescriptionChange} type="text area" label='Description'  />
+						<Form.TextArea   onChange={this.handleDescriptionChange} type="text area" label='Description'  />
 					</Form.Group>
-					<center><Button id={this.props.id}  onClick={this.props.editGift} type="submit" color="teal" className="ui black fluid button">Submit</Button> </center>
+					<center><Button id={this.props.id}  onClick={this.handleEdit} type="submit" color="teal" className="ui black fluid button">Submit</Button> </center>
 					</Form>
 					</Segment>
 					</Grid>
@@ -50,4 +109,16 @@ class Gift extends React.Component {
 };
 }
 
-export default Gift;
+const mapStateToProps = (state) => {
+  return {
+    gifts: state.gifts.gifts,
+		user_id: state.users.user_id,
+  };
+};
+
+const mapDispatchToProps = {
+  editTheGift: editTheGift
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Gift);

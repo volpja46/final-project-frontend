@@ -1,6 +1,7 @@
 import React from 'react';
 import Gift from './Gift';
 import { Table, Container } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 
 const GiftList = (props) => {
@@ -30,4 +31,11 @@ return (
   : <h1>You haven't logged any gifts yet</h1>
 )
 }
-export default GiftList;
+
+const mapStateToProps = (state) => {
+  return {
+    gifts: state.gifts.gifts
+  };
+};
+
+export default connect(mapStateToProps)(GiftList);

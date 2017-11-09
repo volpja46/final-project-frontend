@@ -7,10 +7,11 @@ export default function giftsReducer(state = {gifts:[]} , action) {
       return Object.assign({}, state, {gifts: state.gifts.filter(gift => gift.id !== giftId)}
     )
     case "EDIT_GIFT":
-    const editedGiftId = action.payload;
-     let editedGift = state.gifts.filter(gift => gift.id === editedGiftId)
-      return Object.assign({}, state, {gifts: action.payload})
-    case "ADD_GIFT":
+    let editedGiftId = action.payload.id
+    let newGifts = state.gifts.filter(gift => gift.id !== editedGiftId)
+    return Object.assign({}, state, {gifts: state.gifts.filter(gift => gift.id !== editedGiftId).concat(action.payload)}
+    )
+     case "ADD_GIFT":
       return Object.assign({}, state, {
         gifts: state.gifts.concat(action.payload)
       });

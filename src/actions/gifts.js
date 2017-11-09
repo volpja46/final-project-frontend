@@ -35,7 +35,6 @@ export function addGift(newGift){
    }
  }
 
-
  export function removeTheGift(giftId){
    return (dispatch) => {
     fetch(`http://localhost:3000/api/v1/gifts/${giftId}`, {
@@ -61,7 +60,6 @@ export function addGift(newGift){
 
 
   export function editTheGift(finalEditedGift) {
-    debugger
     return (dispatch) => {
      fetch(`http://localhost:3000/api/v1/gifts/${finalEditedGift.id}`, {
        method: 'PATCH',
@@ -71,7 +69,6 @@ export function addGift(newGift){
        },
      body: JSON.stringify(finalEditedGift)
       }).then(res => res.json())
-        .then(res => {debugger})
         .then(editedGift => dispatch(editGift(editedGift)))
       }
     }

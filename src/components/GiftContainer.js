@@ -8,13 +8,13 @@ import { getGifts } from '../actions/gifts'
 import { addGift } from '../actions/gifts'
 import { connect } from 'react-redux'
 import { removeTheGift } from '../actions/gifts'
-import { editTheGift } from '../actions/gifts'
+
 
 class GiftContainer extends React.Component {
+
   constructor (props){
     super(props)
     this.state = {
-      gifts: [],
       user_id: props.user_id,
       name: '',
       date: '',
@@ -84,35 +84,11 @@ class GiftContainer extends React.Component {
      this.props.removeTheGift(giftId)
   }
 
-
-  handleEdit = (event) => {
-    debugger
-    let giftId = parseInt(event.target.id)
-    let editedGift = this.props.gifts.find((gift)=>{
-        return gift.id === giftId
-     })
-
-     let finalEditedGift = {
-       id: editedGift.id,
-       name: this.state.name,
-       occasion:this.state.occasion,
-       date:this.state.date,
-       for_who:this.state.for_who,
-       description:this.state.description,
-       photo: this.state.photo,
-       user_id: this.state.user_id
-       }
-
-     this.props.editTheGift(finalEditedGift)
-   }
-
   render() {
     console.log('rerender')
-    // const giftsForCurrentUser = this.props.gifts.filter(gift => {
-    // 			return gift.user_id === this.props.user_id && gift.description.toLowerCase().includes(this.state.searchTerm)  || gift.for_who.toLowerCase().includes(this.state.searchTerm)
-    //       || gift.occasion.toLowerCase().includes(this.state.searchTerm)
-    //       || gift.name.toLowerCase().includes(this.state.searchTerm)
-    // 		});
+    const giftsForCurrentUser = this.props.gifts.filter(gift => {
+    			return this.props.user_id === gift.user_id && gift.description.toLowerCase().includes(this.state.searchTerm)
+    		});
 
      return(
        <div>
@@ -124,7 +100,7 @@ class GiftContainer extends React.Component {
             style={{ height: '100%', marginTop: '1em', marginLeft:'0.43em'}}
                 verticalAlign='middle'
                 textAlign='center'>
-        <GiftList gifts={this.props.gifts} removeGift={this.handleRemove} editGift={this.handleEdit}/>
+        <GiftList gifts={giftsForCurrentUser} removeGift={this.handleRemove} editGift={this.handleEdit}/>
         </Grid>
         <GiftModal handleNameChange={this.handleNameChange}
             handleDescriptionChange={this.handleDescriptionChange}
@@ -140,15 +116,15 @@ class GiftContainer extends React.Component {
 const mapStateToProps = (state) => {
 
   return {
-    gifts: state.gifts.gifts
+    gifts: state.gifts.gifts,
+    user_id: state.users.user_id
   };
 };
 
 const mapDispatchToProps = {
   getGifts: getGifts,
   addGift: addGift,
-  removeTheGift: removeTheGift,
-  editTheGift: editTheGift
+  removeTheGift: removeTheGift
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GiftContainer);

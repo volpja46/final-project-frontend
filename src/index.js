@@ -9,6 +9,7 @@ import App from './App';
 import usersReducer from './reducers/usersReducer'
 import giftsReducer from './reducers/giftsReducer'
 import eventsReducer from './reducers/eventsReducer'
+import presentsReducer from './reducers/presentsReducer'
 import 'semantic-ui-css/semantic.min.css';
 import registerServiceWorker from './registerServiceWorker';
 import 'font-awesome/css/font-awesome.css';
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   users: usersReducer,
   gifts: giftsReducer,
   events: eventsReducer,
+  presents: presentsReducer
   })
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

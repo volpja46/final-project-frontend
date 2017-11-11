@@ -8,7 +8,6 @@ import { getEvents } from '../actions/events'
 import { addEvent } from '../actions/events'
 import { removeTheEvent } from '../actions/events'
 import AddEventModal from './AddEventModal'
-// import { editTheEvent } from '../actions/events'
 
 
 class EventContainer extends React.Component {
@@ -18,7 +17,8 @@ class EventContainer extends React.Component {
       user_id: props.user_id,
       name: '',
       date: '',
-      type_of_celebration: ''
+      type_of_celebration: '',
+      budget: '',
     }
   }
 
@@ -26,6 +26,11 @@ class EventContainer extends React.Component {
     this.props.getEvents()
     }
 
+    handleBudgetChange = (event) => {
+      this.setState({
+        budget: event.target.value
+      })
+    }
 
   handleNameChange = (event) => {
     this.setState({
@@ -51,7 +56,8 @@ class EventContainer extends React.Component {
     name: this.state.name,
     date: this.state.date,
     user_id: this.props.user_id,
-    type_of_celebration: this.state.type_of_celebration
+    type_of_celebration: this.state.type_of_celebration,
+    budget: this.state.budget
   }
     this.props.addEvent(newEvent)
   }
@@ -61,24 +67,22 @@ class EventContainer extends React.Component {
     this.props.removeTheEvent(eventId)
  }
 
-
   render() {
-    const eventsForCurrentUser = this.props.events.filter(event => {
-      return this.props.user_id === event.user_id
-    		});
      return(
        <div>
          <Navbar/>
           <Grid
-            style={{ height: '100%', marginTop: '10em', marginLeft:'0.44em'}}
+            style={{ height: '50%', marginTop: '7em', marginLeft:'0.50em'}}
             verticalAlign='middle'
             textAlign='center'>
-          <EventList handleRemove={this.handleRemove} events={eventsForCurrentUser}/>
+          <EventList handleRemove={this.handleRemove} events={this.props.events}/>
         </Grid>
-        <AddEventModal handleSubmit={this.handleSubmit} handleNameChange={this.handleNameChange} handletypeOfCelebrationChange={this.handletypeOfCelebrationChange}
-          handleDateChange={this.handleDateChange}
-        />
-      </div>
+          <AddEventModal handleNameChange={this.handleNameChange}
+            handleDateChange={this.handleDateChange}
+            handleBudget={this.handleBudget}
+            handletypeOfCelebrationChange={this.handletypeOfCelebrationChange}
+            handleSubmit={this.handleSubmit}/>
+</div>
     )
   }
 }

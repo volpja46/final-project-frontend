@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { signUpUser } from '../actions/user'
 
 
-class SignUpForm extends React.Component{
+class SignUpForm extends React.Component {
   constructor(){
     super()
     this.state = {
@@ -26,7 +26,7 @@ class SignUpForm extends React.Component{
     })
   }
 
-  handleLogin = (event) => {
+  handleSignUp = (event) => {
     event.preventDefault()
     let newUser = {
       username: this.state.username,
@@ -53,7 +53,7 @@ class SignUpForm extends React.Component{
 render(){
   return (
 
-    <div className='signup-form' style={{backgroundColor:'black'}}>
+    <div className='signup-form' style={{backgroundColor:'white'}}>
       {/*
         Heads up! The styles below are necessary for the correct render of this example.
         You can do same with CSS, the main idea is that all the elements up to the `Grid`
@@ -93,7 +93,7 @@ render(){
                 type='password'
               />
 
-              <Button onClick={this.handleLogin} color='teal' fluid size='large'>Create account</Button>
+              <Button onClick={this.handleSignUp} color='teal' fluid size='large'>Create account</Button>
             </Segment>
           </Form>
           <Message>

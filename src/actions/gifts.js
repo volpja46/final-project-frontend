@@ -58,7 +58,6 @@ export function addGift(newGift){
     }
   }
 
-
   export function editTheGift(finalEditedGift) {
     return (dispatch) => {
      fetch(`http://localhost:3000/api/v1/gifts/${finalEditedGift.id}`, {

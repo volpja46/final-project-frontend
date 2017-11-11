@@ -66,7 +66,7 @@ export default class HomePageLayout extends Component {
             <Container centered text>
               <Header
                 as='h1'
-                color='teal'
+                color='black'
                 content='Gift Organizer'
                 inverted
                 style={{ color:'black', fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em', textAlign:'center' }}

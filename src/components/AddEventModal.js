@@ -17,6 +17,7 @@ textAlign='center'>
 <Header style={{textAlign:'center', marginTop:'.05 em'}}as='h2' color='teal' content= "Add a new Event" className="fluid">
 </Header>
 <Form style={{color:'black'}} onSubmit={props.handleSubmit} >
+
 <Form.Group >
 <Form.Input  onChange={props.handletypeOfCelebrationChange} label='Type of celebration' placeholder='Type of celebration' />
 </Form.Group>
@@ -25,6 +26,9 @@ textAlign='center'>
 </Form.Group>
 <Form.Group >
 <Form.Input  onChange={props.handleDateChange} label='Date' placeholder='ex: 2018-01-30' />
+</Form.Group>
+<Form.Group >
+<Form.Input  onChange={props.handleBudgetChange} label='Budget' placeholder='Budget' />
 </Form.Group>
 <center><Button type="submit" color="teal" className="ui black fluid button" >Submit</Button> </center>
 </Form>

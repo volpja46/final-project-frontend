@@ -13,7 +13,8 @@ class Gift extends React.Component {
 			description:this.props.giftData.description,
 			photo: '',
 			for_who: this.props.giftData.for_who,
-			occasion: this.props.giftData.occasion
+			occasion: this.props.giftData.occasion,
+			modalOpen: false
 		}
 	}
 
@@ -47,6 +48,15 @@ class Gift extends React.Component {
 		})
 	}
 
+	handleOpen = () => this.setState({ modalOpen: true })
+
+	handleClose = (event) => {
+		this.setState({
+		modalOpen: false
+	 })
+	 this.handleEdit(event)
+	}
+
 	handleEdit = (event) => {
     let giftId = parseInt(event.target.id)
     let editedGift = this.props.gifts.find((gift)=>{
@@ -75,8 +85,11 @@ class Gift extends React.Component {
 				<td>{this.props.giftData.description}</td>
 				<td>
 					<Button size="medium" style={{color:'black', width:'7.6em', marginBottom:'.20em'}} id={this.props.id}  onClick={this.props.removeGift}>delete gift</Button>
-					<Modal  style={{display: 'block'}} size="small" trigger={<Button size="medium" style={{color:'black', width:'7.6em'}} id={this.props.id} >edit gift</Button>}
-					closeIcon basic>
+					<Modal  style={{display: 'block'}} size="small" trigger={<Button onClick={this.handleOpen} size="medium" style={{color:'black', width:'7.6em'}} id={this.props.id} >edit gift</Button>}
+					open={this.state.modalOpen}
+					onClose={this.handleClose}
+					basic
+					>
 					<Header icon='gift' align="center" size="huge" color="teal" content='Update your gift' />
 					<Modal.Content>
 					<Grid
@@ -96,7 +109,7 @@ class Gift extends React.Component {
 					<Form.Group widths='equal'>
 						<Form.TextArea   onChange={this.handleDescriptionChange} value={this.state.description} type="text area" label='Description'  />
 					</Form.Group>
-					<center><Button id={this.props.id}  onClick={this.handleEdit} type="submit" color="teal" className="ui black fluid button">Submit</Button> </center>
+					<center><Button id={this.props.id}  onClick={this.handleClose} type="submit" color="teal" className="ui black fluid button">Submit</Button> </center>
 					</Form>
 					</Segment>
 					</Grid>

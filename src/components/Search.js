@@ -16,7 +16,7 @@ const Search = props => {
 				value={props.searchTerm}
 				onChange={props.handleChange}
 			/>
-			<i style={{color:'white', marginTop:'0.25em'}}className="circular search link icon" />
+			<i style={{color:'teal', marginTop:'0.25em'}}className="circular search link icon" />
 		</Grid>
 		</div>
 	);

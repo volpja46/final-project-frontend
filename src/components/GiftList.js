@@ -5,8 +5,11 @@ import { connect } from 'react-redux'
 
 
 const GiftList = (props) => {
+  const filteredGifts = props.gifts.filter((gift) => {
+   return gift.user_id === props.user_id
+ })
 
-   const giftTable = props.gifts.map((gift, index)=> <Gift key={index} id={gift.id} giftData= {gift} removeGift={props.removeGift}/>)
+   const giftTable = filteredGifts.map((gift, index)=> <Gift key={index} id={gift.id} giftData= {gift} removeGift={props.removeGift}/>)
 
 return (
   props.gifts.length > 0 ?
@@ -31,10 +34,11 @@ return (
   : <h1>You haven't logged any gifts yet</h1>
 )
 }
-
+// can use these props in THIS component!
 const mapStateToProps = (state) => {
   return {
-    gifts: state.gifts.gifts
+    gifts: state.gifts.gifts,
+    user_id: state.users.user_id
   };
 };
 

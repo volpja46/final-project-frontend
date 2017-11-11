@@ -5,6 +5,21 @@
   flex-direction: column !important;
 }
 
+.Events {
+  text-align: center !important;
+  /*display: flex !important;*/
+  float: right;
+  width: 350px;
+  height: 250px;
+  align-items: center !important;
+  flex-direction: column !important;
+  padding: 5px !important;
+  margin-bottom: 10px !important;
+  margin-top: 10px !important;
+  outline: thick outset #27DFD3 !important;
+}
+
+
 #navbar {
 position: fixed;
 top: 10px;

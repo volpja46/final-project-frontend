@@ -12,7 +12,7 @@ import EventContainer from './components/EventContainer'
 
 const App = (props) => {
   return (
-    <div className="App" style={{backgroundColor:'black'}}>
+    <div className="App">
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/" component={HomePageLayout} />
       <Route exact path="/login" component={LoginForm} />

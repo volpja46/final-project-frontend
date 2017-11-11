@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
 
 render(){
   return (
-    <div padded="very" className='login-form' style={{ backgroundColor: 'black'}}>
+    <div padded="very" className='login-form' style={{ backgroundColor: 'white'}}>
       {/*
         Heads up! The styles below are necessary for the correct render of this example.
         You can do same with CSS, the main idea is that all the elements up to the `Grid`

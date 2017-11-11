@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import GiftContainer from './GiftContainer'
 import Navbar from './Navbar'
-import EventContainer from './EventContainer'
+
 
 const Profile = (props) => {
   return (
@@ -10,7 +10,6 @@ const Profile = (props) => {
       <Navbar/>
     <h1><center>Welcome, {props.username}</center></h1>
     <GiftContainer user_id={props.user_id}/>
-    <EventContainer user_id={props.user_id}/>
   </div>
   )
 }

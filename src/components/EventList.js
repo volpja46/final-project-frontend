@@ -1,37 +1,35 @@
 import React from 'react';
 import Event from './Event';
-import { Table, Container } from 'semantic-ui-react'
+import { Table, Container, Grid, Header } from 'semantic-ui-react'
 import '../App.css'
 import { connect } from 'react-redux'
 
-
 const EventList = (props) => {
 
-  const eventTable = props.events.map((event, index)=> <Event key={index} id={event.id} eventData= {event} handleRemove={props.handleRemove}/>)
+  const filteredEvents = props.events.filter((event) => {
+   return event.user_id === props.user_id
+ })
+
+  const eventTable = filteredEvents.map((event, index)=> <Event key={index} id={event.id} eventData= {event} handleRemove={props.handleRemove}/>)
+
 
 return (
-  props.events.length > 0 ?
+  eventTable.length > 0 ?
   <div>
-  <Container>
-	<table className="ui padded inverted teal table">
-		<tbody>
-			<tr>
-          <Table.HeaderCell className="aligned header" width={6}>Date</Table.HeaderCell>
-        <Table.HeaderCell className="aligned header" color ="teal" width={6}>Name</Table.HeaderCell>
-          <Table.HeaderCell className="aligned header" width={6}>Celebration Type</Table.HeaderCell>
-			</tr>
-			{eventTable}
-		</tbody>
-	</table>
-</Container>
+    <h1>All your upcoming events:</h1>
+    {eventTable}
 </div>
-  : null
+  : <Grid style={{ height: '100%', marginTop: '1em', color:'black'}}
+  verticalAlign='middle'
+  textAlign='center'><h1>You haven't logged any events yet</h1>
+</Grid>
 )
 }
 
 const mapStateToProps = (state) => {
   return {
-    events: state.events.events
+    events: state.events.events,
+    user_id: state.users.user_id
   };
 };
 

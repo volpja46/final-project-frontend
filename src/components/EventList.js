@@ -5,7 +5,6 @@ import '../App.css'
 import { connect } from 'react-redux'
 
 const EventList = (props) => {
-
   const filteredEvents = props.events.filter((event) => {
    return event.user_id === props.user_id
  })

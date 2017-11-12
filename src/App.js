@@ -6,9 +6,7 @@ import HomePageLayout from './components/HomePageLayout'
 import SignUpForm from './components/SignUpForm'
 import './App.css';
 import EventContainer from './components/EventContainer'
-// import AddGiftForm from './components/AddGiftForm'
-// import Authorized from "./components/Authorized";
-// const authorizedProfile = Authorized(Profile);
+
 
 const App = (props) => {
   return (

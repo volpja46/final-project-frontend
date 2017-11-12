@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 
 const GiftList = (props) => {
+
   const filteredGifts = props.gifts.filter((gift) => {
    return gift.user_id === props.user_id
  })

@@ -5,7 +5,6 @@ export function getEvents () {
     .then(eventsData => dispatch(setEvents(eventsData)))
   }
 }
-
 export function setEvents(eventsData) {
   return {
     type: "SET_CURRENT_EVENTS",
@@ -14,6 +13,7 @@ export function setEvents(eventsData) {
 }
 
 export function addEvent(newEvent){
+  debugger
   return (dispatch) => {
  fetch('http://localhost:3000/api/v1/events', {
      method: 'POST',

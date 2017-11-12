@@ -1,12 +1,10 @@
 import React from 'react'
-import {Grid} from 'semantic-ui-react'
 import '../App.css'
 import AddPresentModal from './AddPresentModal'
-import { getPresents } from '../actions/presents'
-import { addPresent } from '../actions/presents'
 import { connect } from 'react-redux'
-// import { removeTheGift } from '../actions/gifts'
-
+import { addPresent } from '../actions/presents'
+import Present from './Present'
+import {Button, Container, Grid, Modal} from 'semantic-ui-react'
 
 class PresentContainer extends React.Component {
   constructor(props){
@@ -20,10 +18,6 @@ class PresentContainer extends React.Component {
     }
   }
 
-  componentDidMount = () => {
-    this.props.getPresents()
-    }
-
   handleSubmit = (event) => {
     event.preventDefault()
     let newPresent = {
@@ -31,7 +25,7 @@ class PresentContainer extends React.Component {
     event_id: this.state.event_id,
     store: this.state.store,
     price: this.state.price,
-    price: this.state.priority
+    priority: this.state.priority
   }
   this.props.addPresent(newPresent)
   }
@@ -61,35 +55,26 @@ class PresentContainer extends React.Component {
   }
 
   render() {
+    const filteredPresents = this.props.presents.filter((present) => {
+     return present.event_id === this.props.eventId
+   })
 
-     return(
-       <div>
-          <Grid
-            style={{ height: '100%', marginTop: '1em', marginLeft:'0.43em'}}
-                verticalAlign='middle'
-                textAlign='center'>
-        <GiftList gifts={giftsForCurrentUser} removeGift={this.handleRemove} />
-        </Grid>
-        <GiftModal handleNameChange={this.handleNameChange}
-            handleDescriptionChange={this.handleDescriptionChange}
-          handleDateChange={this.handleDateChange}
-          handleFromWhoChange={this.handleFromWhoChange}
-          handleOccasionChange={this.handleOccasionChange}
-          handleSubmit={this.handleSubmit}/>
-      </div>
+     const presentsTable =
+      filteredPresents.map((present, index)=> <Present key={index} id={present.id} eventId={this.props.eventId} presentData= {present}/>)
+  return (
+    <div>
+        {presentsTable}
+  </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    presents: state.presents.presents,
-    user_id: state.users.user_id
+const mapStateToProps = (state) => {  return {
+  presents: state.presents.presents
   };
 };
 
 const mapDispatchToProps = {
-  getPresents: getPresents,
   addPresent: addPresent
 };
 

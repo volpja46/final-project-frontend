@@ -5,6 +5,7 @@ import { editTheEvent } from '../actions/events'
 import { connect } from 'react-redux'
 import AddPresentModal from './AddPresentModal'
 import '../App.css';
+import PresentContainer from './PresentContainer'
 
 class Event extends React.Component {
 	constructor (props){
@@ -21,7 +22,6 @@ class Event extends React.Component {
   }
 
 	handleOpen = () => this.setState({ modalOpen: true })
-
 
 	handleBudgetChange = (event) => {
 		this.setState({
@@ -73,7 +73,9 @@ class Event extends React.Component {
 
 	render(){
 	return (
+			<div className="wrapper">
 			<div className="Events">
+    	<Grid.Column style={{marginTop:'1em'}} floated='left' width={5}>
 				<p>Date: {this.props.eventData.date}</p>
 				<p>For who: {this.props.eventData.name}</p>
 				<p>Type of celebration: {this.props.eventData.type_of_celebration}</p>
@@ -108,9 +110,13 @@ class Event extends React.Component {
 					</Grid>
 					</Modal.Content>
 					</Modal>
-					<Button icon='gift' onClick={this.onClick} style={{color:'black', decoration:'bold', marginTop:'.20em'}}>add a present for this event</Button>
-						{this.state.showPresents && <AddPresentModal eventId={this.props.id}/>}
-					</div>
+					<AddPresentModal eventId={this.props.id}/>
+			</Grid.Column>
+ 		<Grid.Column className="Gifts" width={5}>
+					<PresentContainer eventId={this.props.id}/>
+				</Grid.Column>
+		</div>
+	</div>
 	);
 };
 }

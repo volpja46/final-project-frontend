@@ -13,25 +13,14 @@ class AddPresentModal extends React.Component {
       event_id: this.props.eventId,
       store: '',
       priority: '',
-      price: ''
+      price: '',
+      modalOpen: false
     }
   }
 
   componentDidMount = () => {
     this.props.getPresents()
     }
-
-  handleSubmit = (event) => {
-    event.preventDefault()
-    let newPresent = {
-    name: this.state.name,
-    event_id: this.state.event_id,
-    store: this.state.store,
-    price: this.state.price,
-    price: this.state.priority
-  }
-  this.props.addPresent(newPresent)
-}
 
   handleNameChange = (event) => {
     this.setState({
@@ -57,26 +46,63 @@ class AddPresentModal extends React.Component {
     })
   }
 
+  handleClose = (event) => {
+    this.setState({
+    modalOpen: false
+   })
+   this.handleSubmit(event)
+  }
+
+    handleSubmit = (event) => {
+      event.preventDefault()
+      let newPresent = {
+      name: this.state.name,
+      event_id: this.state.event_id,
+      store: this.state.store,
+      price: this.state.price,
+      priority: this.state.priority
+    }
+    this.props.addPresent(newPresent)
+  }
+
+
+  handleOpen = () => {
+    this.setState ({
+      modalOpen: true
+    })
+  }
+
   render (){
   return (
+    <div>
+    <Modal  style={{display: 'block'}} size="small" trigger={<Button onClick={this.handleOpen} size="medium" style={{color:'black', width:'7.6em'}} id={this.props.id} >add a gift for this event</Button>}
+    open={this.state.modalOpen}
+    onClose={this.handleClose}
+    basic
+    >
+    <Header icon='gift' align="center" size="huge" color="teal" content='add a present' />
+    <Modal.Content>
     <Grid
     style={{ height: '100%', marginTop: '1em', color:'black'}}
     verticalAlign='middle'
     textAlign='center'>
     <Segment padded  centered >
-    <Form  onSubmit={this.handleSubmit}>
+    <Form>
     <Form.Group stacked={2}>
-      <Form.Input onChange ={this.handleNameChange} value={this.state.name}  color="teal" label='Present' placeholder='Present' />
-      <Form.Input onChange={this.handlePriceChange} value={this.state.price} label='Price' placeholder="price"  /><br/>
+      <Form.Input onChange ={this.handleNameChange} value={this.state.name}  color="teal" label='Gift'  />
+      <Form.Input onChange={this.handleStoreChange} value={this.state.store} label='store'  /><br/>
     </Form.Group>
     <Form.Group stackable={2}>
-      <Form.Input   onChange={this.handleStoreChange} value={this.state.store} label='Store?' placeholder='Store' />
-      <Form.Input  onChange={this.handlePriorityChange} value={this.state.priority} label='priority' placeholder='priority' />
-      <Button>xxxx</Button>
+      <Form.Input   onChange={this.handlePriceChange} value={this.state.price} label='Price' />
+      <Form.Input  onChange={this.handlePriorityChange} value={this.state.priority} label='Priority' placeholder='Rriority' />
     </Form.Group>
+    <center><Button id={this.props.id}  onClick={this.handleClose} type="submit" color="teal" className="ui black fluid button">Submit</Button> </center>
     </Form>
-    </Segment>
-    </Grid>
+  </Segment>
+</Grid>
+</Modal.Content>
+</Modal>
+</div>
   )
  }
 }
@@ -90,7 +116,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   addPresent: addPresent,
-  getPresents: getPresents
+  getPresents: getPresents,
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddPresentModal)

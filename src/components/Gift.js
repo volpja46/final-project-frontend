@@ -84,37 +84,37 @@ class Gift extends React.Component {
 				<td>{this.props.giftData.for_who}</td>
 				<td>{this.props.giftData.description}</td>
 				<td>
-					<Button size="medium" style={{color:'black', width:'7.6em', marginBottom:'.20em'}} id={this.props.id}  onClick={this.props.removeGift}>delete gift</Button>
-					<Modal  style={{display: 'block'}} size="small" trigger={<Button onClick={this.handleOpen} size="medium" style={{color:'black', width:'7.6em'}} id={this.props.id} >edit gift</Button>}
-					open={this.state.modalOpen}
-					onClose={this.handleClose}
-					basic
-					>
-					<Header icon='gift' align="center" size="huge" color="teal" content='Update your gift' />
-					<Modal.Content>
-					<Grid
-					style={{ height: '100%', marginTop: '1em', color:'black'}}
-					verticalAlign='middle'
-					textAlign='center'>
-					<Segment padded  centered >
-					<Form  onSubmit={this.props.handleSubmit}>
-					<Form.Group stacked={2}>
-						<Form.Input onChange ={this.handleNameChange} value={this.state.name}  color="teal" label='Gift'  />
-						<Form.Input onChange={this.handleFromWhoChange} value={this.state.for_who} label='Received from'  /><br/>
-					</Form.Group>
-					<Form.Group stackable={2}>
-						<Form.Input   onChange={this.handleOccasionChange} value={this.state.occasion} label='Occasion' />
-						<Form.Input  onChange={this.handleDateChange} value={this.state.date} label='Date' placeholder='ex: 2018-01-30' />
-					</Form.Group>
-					<Form.Group widths='equal'>
-						<Form.TextArea   onChange={this.handleDescriptionChange} value={this.state.description} type="text area" label='Description'  />
-					</Form.Group>
-					<center><Button id={this.props.id}  onClick={this.handleClose} type="submit" color="teal" className="ui black fluid button">Submit</Button> </center>
-					</Form>
-					</Segment>
-					</Grid>
-					</Modal.Content>
-					</Modal>
+		<Button size="medium" style={{color:'black', width:'7.6em', marginBottom:'.20em'}} id={this.props.id}  onClick={this.props.removeGift}>delete gift</Button>
+			<Modal  style={{display: 'block'}} size="small" trigger={<Button onClick={this.handleOpen} size="medium" style={{color:'black', width:'7.6em'}} id={this.props.id} >edit gift</Button>}
+			open={this.state.modalOpen}
+			onClose={this.handleClose}
+			basic
+			>
+			<Header icon='gift' align="center" size="huge" color="teal" content='Update your gift' />
+			<Modal.Content>
+			<Grid
+			style={{ height: '100%', marginTop: '1em', color:'black'}}
+			verticalAlign='middle'
+			textAlign='center'>
+			<Segment padded  centered >
+			<Form  onSubmit={this.props.handleSubmit}>
+			<Form.Group stacked={2}>
+				<Form.Input onChange ={this.handleNameChange} value={this.state.name}  color="teal" label='Gift'  />
+				<Form.Input onChange={this.handleFromWhoChange} value={this.state.for_who} label='Received from'  /><br/>
+			</Form.Group>
+			<Form.Group stackable={2}>
+				<Form.Input   onChange={this.handleOccasionChange} value={this.state.occasion} label='Occasion' />
+				<Form.Input  onChange={this.handleDateChange} value={this.state.date} label='Date' placeholder='ex: 2018-01-30' />
+			</Form.Group>
+			<Form.Group widths='equal'>
+				<Form.TextArea   onChange={this.handleDescriptionChange} value={this.state.description} type="text area" label='Description'  />
+			</Form.Group>
+			<center><Button id={this.props.id}  onClick={this.handleClose} type="submit" color="teal" className="ui black fluid button">Submit</Button> </center>
+			</Form>
+		</Segment>
+	</Grid>
+</Modal.Content>
+</Modal>
 			</td>
 		</tr>
 	);

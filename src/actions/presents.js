@@ -1,15 +1,14 @@
 export function getPresents () {
-  debugger
   return (dispatch) => {
     fetch('http://localhost:3000/api/v1/presents')
     .then(response => response.json())
-    .then(presentssData => dispatch(setPresents(presentssData)))
+    .then(presentData => dispatch(setPresents(presentData)))
   }
 }
-export function setPresents(presentssData) {
+export function setPresents(presentData) {
   return {
     type: "SET_CURRENT_PRESENTS",
-    payload: presentssData
+    payload: presentData
   }
 }
 
@@ -35,46 +34,46 @@ export function addPresent(newPresent){
    }
  }
 
- // export function removeTheGift(giftId){
- //   return (dispatch) => {
- //    fetch(`http://localhost:3000/api/v1/gifts/${giftId}`, {
- //      method: 'delete',
- //      headers: {
- //        Accept: 'application/json',
- //        'Content-Type': 'application/json'
- //      },
- //     body: JSON.stringify({
- //       id: giftId
- //     })
- //   }).then(res => res.json())
- //     .then(deletedGiftId => dispatch(removeGift(deletedGiftId)))
- //    }
- //  }
- //
- //  export function removeGift(deletedGiftId) {
- //    return {
- //      type: "REMOVE_GIFT",
- //      payload: deletedGiftId.deleted_gift_id
- //    }
- //  }
- //
- //  export function editTheGift(finalEditedGift) {
- //    return (dispatch) => {
- //     fetch(`http://localhost:3000/api/v1/gifts/${finalEditedGift.id}`, {
- //       method: 'PATCH',
- //       headers: {
- //         Accept: 'application/json',
- //         'Content-Type': 'application/json'
- //       },
- //     body: JSON.stringify(finalEditedGift)
- //      }).then(res => res.json())
- //        .then(editedGift => dispatch(editGift(editedGift)))
- //      }
- //    }
- //
- //      export function editGift(editedGift) {
- //        return {
- //          type: "EDIT_GIFT",
- //          payload: editedGift
- //        }
- //      }
+ export function removeThePresent(presentId){
+   return (dispatch) => {
+    fetch(`http://localhost:3000/api/v1/presents/${presentId}`, {
+      method: 'delete',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+     body: JSON.stringify({
+       id: presentId
+     })
+   }).then(res => res.json())
+     .then(deletedPresentId => dispatch(removePresent(deletedPresentId)))
+    }
+  }
+
+  export function removePresent(deletedPresentId) {
+    return {
+      type: "REMOVE_PRESENT",
+      payload: deletedPresentId.deleted_present_id
+    }
+  }
+
+  export function editThePresent(finalEditedPresent) {
+    return (dispatch) => {
+     fetch(`http://localhost:3000/api/v1/presents/${finalEditedPresent.id}`, {
+       method: 'PATCH',
+       headers: {
+         Accept: 'application/json',
+         'Content-Type': 'application/json'
+       },
+     body: JSON.stringify(finalEditedPresent)
+      }).then(res => res.json())
+        .then(editedPresent => dispatch(editPresent(editedPresent)))
+      }
+    }
+
+      export function editPresent(editedPresent) {
+        return {
+          type: "EDIT_PRESENT",
+          payload: editedPresent
+        }
+      }

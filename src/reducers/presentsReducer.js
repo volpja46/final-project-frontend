@@ -1,6 +1,6 @@
 export default function presentsReducer(state = {presents:[]} , action) {
   switch (action.type) {
-    case "SET_CURRENT_PRESENTS ":
+    case "SET_CURRENT_PRESENTS":
       return Object.assign({}, state, {presents: action.payload})
     case "REMOVE_PRESENT":
       const presentId = action.payload;

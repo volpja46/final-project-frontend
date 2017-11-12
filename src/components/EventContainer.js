@@ -5,9 +5,11 @@ import '../App.css'
 import { connect } from 'react-redux'
 import Navbar from './Navbar'
 import { getEvents } from '../actions/events'
+import { getPresents } from '../actions/presents'
 import { addEvent } from '../actions/events'
 import { removeTheEvent } from '../actions/events'
 import AddEventModal from './AddEventModal'
+import PresentContainer from './PresentContainer'
 
 
 class EventContainer extends React.Component {
@@ -24,11 +26,12 @@ class EventContainer extends React.Component {
 
   componentDidMount = () => {
     this.props.getEvents()
+    this.props.getPresents()
     }
 
     handleBudgetChange = (event) => {
       this.setState({
-        budget: event.target.value
+        budget: parseInt(event.target.value)
       })
     }
 
@@ -77,12 +80,12 @@ class EventContainer extends React.Component {
             textAlign='center'>
           <EventList handleRemove={this.handleRemove} events={this.props.events}/>
         </Grid>
-          <AddEventModal handleNameChange={this.handleNameChange}
-            handleDateChange={this.handleDateChange}
-            handleBudget={this.handleBudget}
-            handletypeOfCelebrationChange={this.handletypeOfCelebrationChange}
-            handleSubmit={this.handleSubmit}/>
-</div>
+      <AddEventModal handleNameChange={this.handleNameChange}
+        handleDateChange={this.handleDateChange}
+        handleBudgetChange={this.handleBudgetChange}
+        handletypeOfCelebrationChange={this.handletypeOfCelebrationChange}
+        handleSubmit={this.handleSubmit}/>
+      </div>
     )
   }
 }
@@ -98,7 +101,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   getEvents: getEvents,
   addEvent: addEvent,
-  removeTheEvent: removeTheEvent
+  removeTheEvent: removeTheEvent,
+  getPresents: getPresents
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventContainer)

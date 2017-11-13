@@ -62,7 +62,8 @@ class PresentContainer extends React.Component {
      const presentsTable =
       filteredPresents.map((present, index)=> <Present key={index} id={present.id} eventId={this.props.eventId} presentData= {present}/>)
   return (
-    <div>
+    <div style={{marginTop:'3em'}}>
+      <h1>Gift ideas</h1>
         {presentsTable}
   </div>
     )

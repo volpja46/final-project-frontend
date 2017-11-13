@@ -75,7 +75,7 @@ class AddPresentModal extends React.Component {
   render (){
   return (
     <div>
-    <Modal  style={{display: 'block'}} size="small" trigger={<Button onClick={this.handleOpen} size="medium" style={{color:'black', width:'7.6em'}} id={this.props.id} >add a gift for this event</Button>}
+    <Modal  style={{display: 'block'}} size="small" trigger={<Button icon='gift' color="teal" onClick={this.handleOpen} size="medium" style={{color:'white', width:'7.6em'}} id={this.props.id}>add a gift for this event</Button>}
     open={this.state.modalOpen}
     onClose={this.handleClose}
     basic
@@ -86,7 +86,7 @@ class AddPresentModal extends React.Component {
     style={{ height: '100%', marginTop: '1em', color:'black'}}
     verticalAlign='middle'
     textAlign='center'>
-    <Segment padded  centered >
+    <Segment padded centered >
     <Form>
     <Form.Group stacked={2}>
       <Form.Input onChange ={this.handleNameChange} value={this.state.name}  color="teal" label='Gift'  />

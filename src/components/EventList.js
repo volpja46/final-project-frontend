@@ -14,10 +14,10 @@ const EventList = (props) => {
 
 return (
   eventTable.length > 0 ?
-  <div>
-    <h1>All your upcoming events:</h1>
+  <Container className="card-container">
+    <h1>All your upcoming celebrations:</h1>
     {eventTable}
-</div>
+</Container>
   : <Grid style={{ height: '100%', marginTop: '1em', color:'black'}}
   verticalAlign='middle'
   textAlign='center'><h1>You haven't logged any events yet</h1>

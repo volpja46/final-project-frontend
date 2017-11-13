@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import AddPresentModal from './AddPresentModal'
 import '../App.css';
 import PresentContainer from './PresentContainer'
+import moment from 'moment'
+
 
 class Event extends React.Component {
 	constructor (props){
@@ -71,18 +73,24 @@ class Event extends React.Component {
      this.props.editTheEvent(finalEditedEvent)
    }
 
+
 	render(){
+		var oneDay = 24*60*60*1000;
+		var firstDate = new Date();
+		var secondDate = this.props.eventData.date
+		var finalSecDate = new Date(secondDate)
+		var diffDays = Math.round(Math.abs((firstDate.getTime() - finalSecDate.getTime())/(oneDay)));
+
 	return (
-			<div className="wrapper">
 			<div className="Events">
-    	<Grid.Column style={{marginTop:'1em'}} floated='left' width={5}>
-				<p>Date: {this.props.eventData.date}</p>
-				<p>For who: {this.props.eventData.name}</p>
-				<p>Type of celebration: {this.props.eventData.type_of_celebration}</p>
-				<p>Budget: ${this.props.eventData.budget}</p>
-					<Button size="medium" style={{color:'black', width:'7.6em', marginBottom:'.20em'}} id={this.props.id}  onClick={this.props.handleRemove}>delete event</Button>
+				<h1><b>{diffDays} </b>shopping days until this event</h1>
+				<p><b>Date:</b> {this.props.eventData.date}</p>
+				<p><b>For who:</b> {this.props.eventData.name}</p>
+				<p><b>Type of celebration:</b> {this.props.eventData.type_of_celebration}</p>
+				<p><b>Budget:</b> ${this.props.eventData.budget}</p>
+					<Button color="teal" size="medium" style={{color:'white', width:'7.6em', marginBottom:'.20em'}} id={this.props.id}  onClick={this.props.handleRemove}>delete event</Button>
 					<Modal  style={{display: 'block'}} size="small" trigger={<Button onClick={this.handleOpen}
-					 size="medium" style={{color:'black', width:'7.6em'}} id={this.props.id}
+					 size="medium" color="teal" style={{color:'white', width:'7.6em'}} id={this.props.id}
 					 >edit event details</Button>}
 					 open={this.state.modalOpen}
 					 onClose={this.handleClose}
@@ -91,7 +99,7 @@ class Event extends React.Component {
 					<Header icon='event' align="center" size="huge" color="teal" content='Update this event' />
 					<Modal.Content>
 					<Grid
-					style={{ height: '100%', marginTop: '1em', color:'black'}}
+					style={{ height: '100%', marginTop: '1em', color:'white'}}
 					verticalAlign='middle'
 					textAlign='center'>
 					<Segment padded  centered >
@@ -104,19 +112,15 @@ class Event extends React.Component {
 						<Form.Input value={this.state.type_of_celebration} onChange={this.handletypeOfCelebrationChange}  label='Type of Celebration' />
 						<Form.Input value={this.state.data} onChange={this.handleDateChange} label='Date' placeholder='ex: 2018-01-30' />
 					</Form.Group>
-				<Button id={this.props.id} onClick={this.handleEdit} type="submit" color="teal" className="ui black fluid button">Submit</Button>
+				<Button id={this.props.id} onClick={this.handleEdit} type="submit" color="teal" className="ui fluid button">Submit</Button>
 					</Form>
 					</Segment>
 					</Grid>
 					</Modal.Content>
 					</Modal>
-					<AddPresentModal eventId={this.props.id}/>
-			</Grid.Column>
- 		<Grid.Column className="Gifts" width={5}>
+				<AddPresentModal eventId={this.props.id}/>
 					<PresentContainer eventId={this.props.id}/>
-				</Grid.Column>
-		</div>
-	</div>
+				</div>
 	);
 };
 }

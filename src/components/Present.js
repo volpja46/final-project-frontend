@@ -72,13 +72,14 @@ class Present extends React.Component {
 
 	render(){
 	return (
-			<div className="Events">
-				<p>Name: {this.props.presentData.name}</p>
-				<p>Store: {this.props.presentData.store}</p>
-				<p>Price: {this.props.presentData.price}</p>
-				<p>Priority: {this.props.presentData.priority}</p>
-					<Button size="medium" style={{color:'black', width:'7.6em', marginBottom:'.20em'}} id={this.props.id}  onClick={this.handleRemove}>delete present</Button>
-          <Modal  style={{display: 'block'}} size="small" trigger={<Button onClick={this.handleOpen} size="medium" style={{color:'black', width:'7.6em'}} id={this.props.id} >update gift</Button>}
+    <div className="card-container">
+			<div className="card">
+				<p><b>Name:</b> {this.props.presentData.name}</p>
+				<p><b>Store:</b> {this.props.presentData.store}</p>
+				<p><b>Price:</b> ${this.props.presentData.price}</p>
+				<p><b>Priority:</b> {this.props.presentData.priority}</p>
+					<Button size="medium" color="teal" style={{color:'white', width:'7.6em', marginBottom:'.20em'}} id={this.props.id}  onClick={this.handleRemove}>delete present</Button>
+          <Modal  style={{display: 'block'}} size="small" trigger={<Button onClick={this.handleOpen} color="teal" size="medium" style={{color:'white', width:'7.6em'}} id={this.props.id} >update gift</Button>}
           open={this.state.modalOpen}
           onClose={this.handleClose}
           basic
@@ -92,12 +93,12 @@ class Present extends React.Component {
           <Segment padded  centered >
           <Form>
           <Form.Group stacked={2}>
-            <Form.Input onChange ={this.handleNameChange} value={this.state.name}  color="teal" label='Gift'/>
-            <Form.Input onChange={this.handleStoreChange} value={this.state.store} label='Store'  /><br/>
+            <Form.Input onChange ={this.handleNameChange} value={this.state.name}  color="teal" placeholder='gift name' label='Gift'/>
+            <Form.Input onChange={this.handleStoreChange} value={this.state.store} label='Store' placeholder='store' /><br/>
           </Form.Group>
           <Form.Group stackable={2}>
             <Form.Input  onChange={this.handlePriceChange} value={this.state.price} label='Price' placeholder='price' />
-          <Form.Input   onChange={this.handlePriorityChange} value={this.state.priority} label='priority'  />
+          <Form.Input onChange={this.handlePriorityChange} value={this.state.priority} label='priority' placeholder='priority'  />
           </Form.Group>
           <center><Button id={this.props.id} onClick={this.handleEdit} type="submit" color="teal" className="ui black fluid button">Submit</Button> </center>
           </Form>
@@ -105,6 +106,7 @@ class Present extends React.Component {
           </Grid>
           </Modal.Content>
           </Modal>
+					</div>
 					</div>
 	);
 };

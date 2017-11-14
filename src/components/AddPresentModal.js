@@ -14,6 +14,7 @@ class AddPresentModal extends React.Component {
       store: '',
       priority: '',
       price: '',
+      purchased: false,
       modalOpen: false
     }
   }
@@ -60,7 +61,8 @@ class AddPresentModal extends React.Component {
       event_id: this.state.event_id,
       store: this.state.store,
       price: this.state.price,
-      priority: this.state.priority
+      priority: this.state.priority,
+      purchased: this.state.purchased
     }
     this.props.addPresent(newPresent)
   }
@@ -72,7 +74,9 @@ class AddPresentModal extends React.Component {
     })
   }
 
+
   render (){
+
   return (
     <div>
     <Modal  style={{display: 'block'}} size="small" trigger={<Button icon='gift' color="teal" onClick={this.handleOpen} size="medium" style={{color:'white', width:'7.6em'}} id={this.props.id}>add a gift for this event</Button>}
@@ -80,7 +84,7 @@ class AddPresentModal extends React.Component {
     onClose={this.handleClose}
     basic
     >
-    <Header icon='gift' align="center" size="huge" color="teal" content='add a present' />
+    <Header icon='gift' align="center" size="huge" color="teal" content='add a gift idea' />
     <Modal.Content>
     <Grid
     style={{ height: '100%', marginTop: '1em', color:'black'}}
@@ -89,12 +93,12 @@ class AddPresentModal extends React.Component {
     <Segment padded centered >
     <Form>
     <Form.Group stacked={2}>
-      <Form.Input onChange ={this.handleNameChange} value={this.state.name}  color="teal" label='Gift'  />
-      <Form.Input onChange={this.handleStoreChange} value={this.state.store} label='store'  /><br/>
+      <Form.Input onChange ={this.handleNameChange} value={this.state.name}  color="teal" label='Gift' placeholder="Gift"  />
+      <Form.Input onChange={this.handleStoreChange} value={this.state.store} label='store' placeholder="Store"  /><br/>
     </Form.Group>
     <Form.Group stackable={2}>
-      <Form.Input   onChange={this.handlePriceChange} value={this.state.price} label='Price' />
-      <Form.Input  onChange={this.handlePriorityChange} value={this.state.priority} label='Priority' placeholder='Rriority' />
+      <Form.Input   onChange={this.handlePriceChange} value={this.state.price} placeholder='Price' label='Price' />
+      <Form.Input  onChange={this.handlePriorityChange} value={this.state.priority} label='Priority' placeholder='Priority' />
     </Form.Group>
     <center><Button id={this.props.id}  onClick={this.handleClose} type="submit" color="teal" className="ui black fluid button">Submit</Button> </center>
     </Form>

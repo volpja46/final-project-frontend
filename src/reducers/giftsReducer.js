@@ -8,9 +8,16 @@ export default function giftsReducer(state = {gifts:[]} , action) {
     )
     case "EDIT_GIFT":
     let editedGiftId = action.payload.id
-    let newGifts = state.gifts.filter(gift => gift.id !== editedGiftId)
-    return Object.assign({}, state, {gifts: state.gifts.filter(gift => gift.id !== editedGiftId).concat(action.payload)}
-    )
+    return Object.assign({}, state, {gifts:
+      state.gifts.map(gift => {
+        if (gift.id === editedGiftId) {
+          return action.payload
+        } else {
+          return gift
+        }
+      })
+    }
+  )
      case "ADD_GIFT":
       return Object.assign({}, state, {
         gifts: state.gifts.concat(action.payload)

@@ -6,6 +6,10 @@ import HomePageLayout from './components/HomePageLayout'
 import SignUpForm from './components/SignUpForm'
 import './App.css';
 import EventContainer from './components/EventContainer'
+// import HTML5Backend from 'react-dnd-html5-backend';
+// import PresentColumn from './components/PresentColumn';
+// import { connect } from 'react-redux';
+// import { DragDropContext } from 'react-dnd';
 
 
 const App = (props) => {
@@ -20,4 +24,6 @@ const App = (props) => {
   )
 }
 
+
+// export default withRouter(DragDropContext(HTML5Backend)(App));
 export default withRouter(App);

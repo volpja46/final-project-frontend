@@ -10,6 +10,8 @@
     "react-big-calendar": "^0.17.0",
     "react-bootstrap": "^0.31.5",
     "react-day-picker": "^6.2.1",
+    "react-dnd": "^2.5.4",
+    "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^16.0.0",
     "react-draggable": "^3.0.3",
     "react-fontawesome": "^1.6.1",
@@ -20,7 +22,8 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-form": "^7.1.2",
     "redux-thunk": "^2.2.0",
-    "semantic-ui-react": "^0.75.1"
+    "semantic-ui-react": "^0.75.1",
+    "uuid": "^3.1.0"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",

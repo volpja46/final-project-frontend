@@ -1,6 +1,6 @@
 import React from 'react'
 import GiftList from './GiftList'
-import Search from './Search';
+import SearchBar from './Search';
 import {Grid} from 'semantic-ui-react'
 import '../App.css'
 import GiftModal from './GiftModal'
@@ -92,7 +92,8 @@ class GiftContainer extends React.Component {
             style={{ height: '100%', marginTop: '1em', marginLeft:'0.43em'}}
                 verticalAlign='middle'
                 textAlign='center'>
-        <GiftList gifts={this.props.gifts} removeGift={this.handleRemove} />
+                <SearchBar SearchTerm={this.state.filter} handleSearchChange={this.handleSearchChange}/>
+        <GiftList searchTerm={this.state.searchTerm} gifts={this.props.gifts} removeGift={this.handleRemove} />
         </Grid>
         <GiftModal handleNameChange={this.handleNameChange}
             handleDescriptionChange={this.handleDescriptionChange}

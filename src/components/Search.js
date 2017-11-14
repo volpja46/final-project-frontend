@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid} from 'semantic-ui-react'
+import {Grid, Form, Input} from 'semantic-ui-react'
 
 
 const Search = props => {
@@ -7,16 +7,16 @@ const Search = props => {
 		<div className="ui aligned icon input">
 			<Grid
         textAlign='center'
-        style={{ height: '100%', marginLeft:'25em', marginRight:'23em', marginTop:'1em', marginBottom:'0.5em'}}
+        style={{ height: '80%', marginLeft:'39em', marginRight:'30em', marginTop:'1em', marginBottom:'0.9em'}}
         verticalAlign='middle'
       >
-			<input
+			<Form.Input style={{size:'small', marginRight:'40em', marginLeft:'40em'}}
+				action={{ size: 'small', color: 'teal', labelPosition: 'left', icon: 'search', content: 'Search' }}
 				type="text"
-				placeholder={'Search your gifts'}
 				value={props.searchTerm}
-				onChange={props.handleChange}
+				onChange={props.handleSearchChange}
 			/>
-			<i style={{color:'teal', marginTop:'0.25em'}}className="circular search link icon" />
+
 		</Grid>
 		</div>
 	);

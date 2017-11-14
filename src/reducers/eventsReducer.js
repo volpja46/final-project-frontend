@@ -9,9 +9,16 @@ export default function eventsReducer(state = { events:[] } , action) {
     )
     case "EDIT_EVENT":
     let editedEventId = action.payload.id
-    let newEvents = state.events.filter(event => event.id !== editedEventId)
-    return Object.assign({}, state, {events: state.events.filter(event => event.id !== editedEventId).concat(action.payload)}
-    )
+    return Object.assign({}, state, {events:
+      state.events.map(event => {
+        if (event.id === editedEventId) {
+          return action.payload
+        } else {
+          return event
+        }
+      })
+    }
+  )
     case "ADD_EVENT":
       return Object.assign({}, state, {
         events: state.events.concat(action.payload)

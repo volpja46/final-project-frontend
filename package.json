@@ -23,6 +23,7 @@
     "redux-form": "^7.1.2",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.75.1",
+    "twilio": "^3.9.3",
     "uuid": "^3.1.0"
   },
   "scripts": {

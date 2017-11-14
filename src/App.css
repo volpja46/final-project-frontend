@@ -55,12 +55,10 @@
 
 #navbar {
 	position: fixed;
-	top: 10px;
-	left: 7px;
-	padding: 5px;
+	top: 0px;
+	left: 5px;
 	width: 100%;
 }
-
 .App-logo {
 	animation: App-logo-spin infinite 20s linear;
 	height: 80px;

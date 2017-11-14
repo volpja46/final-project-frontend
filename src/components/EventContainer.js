@@ -1,6 +1,6 @@
 import React from 'react';
 import EventList from './EventList';
-import { Button, Header, Segment, Form, Grid, Modal } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import '../App.css';
 import { connect } from 'react-redux';
 import Navbar from './Navbar';
@@ -9,7 +9,6 @@ import { getPresents } from '../actions/presents';
 import { addEvent } from '../actions/events';
 import { removeTheEvent } from '../actions/events';
 import AddEventModal from './AddEventModal';
-import PresentContainer from './PresentContainer';
 
 class EventContainer extends React.Component {
 	constructor(props) {

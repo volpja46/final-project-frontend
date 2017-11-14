@@ -45,13 +45,8 @@ class LoginForm extends React.Component {
 			<div
 				padded="very"
 				className="login-form"
-				style={{ backgroundColor: 'white' }}
+				style={{ backgroundColor: 'white', marginTop: '18em' }}
 			>
-				{/*
-        Heads up! The styles below are necessary for the correct render of this example.
-        You can do same with CSS, the main idea is that all the elements up to the `Grid`
-        below must have a height of 100%.
-      */}
 				<style>{`
         body > div,
         body > div > div,
@@ -59,52 +54,39 @@ class LoginForm extends React.Component {
           height: 100%; color:black
         }
       `}</style>
-				<Grid
-					textAlign="center"
-					style={{ height: '100%', marginTop: '0.65em' }}
-					verticalAlign="middle"
-				>
-					<Grid.Column style={{ width: 285, height: 355, color: 'black' }}>
-						<Header as="h1" color="teal" textAlign="center">
-							<Image src="/logo.png" />
-							<center>Login to your account</center>
-						</Header>
-						<Form size="massive">
-							<Segment padded>
-								<Form.Input
-									onChange={this.handleUsernameChange}
-									fluid
-									icon="user"
-									iconPosition="left"
-									placeholder="Username"
-								/>
-								<Form.Input
-									onChange={this.handlePasswordChange}
-									fluid
-									icon="lock"
-									iconPosition="left"
-									placeholder="Password"
-									type="password"
-								/>
-								<Button
-									onClick={this.handleLogin}
-									color="teal"
-									fluid
-									size="large"
-								>
-									Login
-								</Button>
-							</Segment>
-						</Form>
-						<Message>
-							Don't have an account yet?{' '}
-							<center>
-								{' '}
-								<a href="signup"> Sign Up Here!</a>
-							</center>
-						</Message>
-					</Grid.Column>
-				</Grid>
+				<Header as="h1" color="teal" textAlign="center">
+					<Image src="/logo.png" />
+					<center>Login to your account</center>
+				</Header>
+				<Form size="massive">
+					<Segment padded>
+						<Form.Input
+							onChange={this.handleUsernameChange}
+							fluid
+							icon="user"
+							iconPosition="left"
+							placeholder="Username"
+						/>
+						<Form.Input
+							onChange={this.handlePasswordChange}
+							fluid
+							icon="lock"
+							iconPosition="left"
+							placeholder="Password"
+							type="password"
+						/>
+						<Button onClick={this.handleLogin} color="teal" fluid size="large">
+							Login
+						</Button>
+					</Segment>
+				</Form>
+				<Message>
+					Don't have an account yet?{' '}
+					<center>
+						{' '}
+						<a href="signup"> Sign Up Here!</a>
+					</center>
+				</Message>
 			</div>
 		);
 	}

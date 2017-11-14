@@ -60,12 +60,7 @@ class SignUpForm extends React.Component {
 
 	render() {
 		return (
-			<div className="signup-form" style={{ backgroundColor: 'white' }}>
-				{/*
-        Heads up! The styles below are necessary for the correct render of this example.
-        You can do same with CSS, the main idea is that all the elements up to the `Grid`
-        below must have a height of 100%.
-      */}
+			<div style={{ marginTop: '15em' }}>
 				<style>{`
         body > div,
         body > div > div,
@@ -73,52 +68,40 @@ class SignUpForm extends React.Component {
           height: 100%;
         }
       `}</style>
-				<Grid
-					textAlign="center"
-					style={{ height: '100%', marginTop: '6em' }}
-					verticalAlign="middle"
-				>
-					<Grid.Column style={{ width: 350, height: 500 }}>
-						<Header as="h1" color="teal" textAlign="center">
-							<Image src="/logo.png" />
-							<center>Please create an account</center>
-						</Header>
-						<Form size="large">
-							<Segment stacked>
-								<Form.Input
-									onChange={this.handleUsernameChange}
-									icon="user"
-									iconPosition="left"
-									label="Select a username"
-								/>
-								<Form.Input
-									onChange={this.handlePasswordChange}
-									fluid
-									icon="lock"
-									iconPosition="left"
-									label="Select a password"
-									type="password"
-								/>
 
-								<Button
-									onClick={this.handleSignUp}
-									color="teal"
-									fluid
-									size="large"
-								>
-									Create account
-								</Button>
-							</Segment>
-						</Form>
-						<Message>
-							Already have an account?{' '}
-							<center>
-								{' '}
-								<a href="login">Login here!</a>
-							</center>
-						</Message>
-					</Grid.Column>
-				</Grid>
+				<Header as="h1" color="teal" textAlign="center">
+					<Image src="/logo.png" />
+					<center>Please create an account</center>
+				</Header>
+				<Form size="large">
+					<Segment stacked>
+						<Form.Input
+							onChange={this.handleUsernameChange}
+							icon="user"
+							iconPosition="left"
+							label="Select a username"
+						/>
+						<Form.Input
+							onChange={this.handlePasswordChange}
+							fluid
+							icon="lock"
+							iconPosition="left"
+							label="Select a password"
+							type="password"
+						/>
+
+						<Button onClick={this.handleSignUp} color="teal" fluid size="large">
+							Create account
+						</Button>
+					</Segment>
+				</Form>
+				<Message>
+					Already have an account?{' '}
+					<center>
+						{' '}
+						<a href="login">Login here!</a>
+					</center>
+				</Message>
 			</div>
 		);
 	}

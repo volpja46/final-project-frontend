@@ -17,7 +17,6 @@ class Event extends React.Component {
 			date: this.props.eventData.date,
 			type_of_celebration: this.props.eventData.type_of_celebration,
 			budget: this.props.eventData.budget,
-			showPresents: false,
 			modalOpen: false
 		};
 	}
@@ -84,19 +83,22 @@ class Event extends React.Component {
 		return this.props.eventData.budget - total;
 	};
 
-	render() {
-		let oneDay = 24 * 60 * 60 * 1000;
-		let firstDate = new Date();
-		let secondDate = this.props.eventData.date;
-		let finalSecDate = new Date(secondDate);
-		var timeDiff = Math.abs(firstDate.getTime() - finalSecDate.getTime());
-		var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+	getDate = () => {
+		var now = moment(new Date());
+		var end = moment(this.props.eventData.date);
+		var diffDays = end.diff(now, 'days') + 1;
+		if (diffDays > 0) {
+			return (diffDays += ' shopping day(s) left');
+		} else if (diffDays < 0) {
+			diffDays = Math.abs(diffDays);
+			return (diffDays += ' days since this event ended');
+		}
+	};
 
-		return this.moneyInBudget() >= 0 ? (
+	render() {
+		return this.moneyInBudget() > 0 ? (
 			<div className="Events">
-				<h1>
-					<b>{diffDays}</b> shopping days until this event
-				</h1>
+				<h1>{this.getDate()}</h1>
 				<h2>
 					<b>You have ${this.moneyInBudget()}</b> left in your budget
 				</h2>
@@ -201,9 +203,7 @@ class Event extends React.Component {
 			</div>
 		) : (
 			<div className="Events">
-				<h1>
-					<b>{diffDays}</b>shopping days until this event
-				</h1>
+				<h1>{this.getDate()}</h1>
 				<h2 style={{ color: 'red' }}>
 					You went over your budget by ${this.moneyInBudget()}
 				</h2>

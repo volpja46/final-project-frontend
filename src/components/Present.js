@@ -18,15 +18,19 @@ import { removeThePresent } from '../actions/presents';
 class Present extends React.Component {
 	constructor(props) {
 		super(props);
+		console.log(this.props.presentData.purchased);
 		this.state = {
 			event_id: this.props.eventId,
 			name: this.props.presentData.name,
 			price: this.props.presentData.price,
 			store: this.props.presentData.store,
 			priority: this.props.presentData.priority,
-			purchased: this.props.presentData.purchased
+			purchased: this.props.presentData.purchased,
+			modalOpen: false
 		};
 	}
+
+	handleOpen = () => this.setState({ modalOpen: true });
 
 	handleRemove = event => {
 		let presentId = parseInt(event.target.id);
@@ -91,9 +95,6 @@ class Present extends React.Component {
 	handleEdit = event => {
 		event.preventDefault();
 		this.handleClose(event);
-		this.setState({
-			purchased: true
-		});
 		let presentId = parseInt(event.target.id);
 		let editedPresent = this.props.presents.find(present => {
 			return present.id === presentId;
@@ -112,6 +113,7 @@ class Present extends React.Component {
 	};
 
 	render() {
+		console.log(this.state.purchased);
 		return (
 			<div className="card-container">
 				<div className="card">

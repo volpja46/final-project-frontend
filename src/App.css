@@ -1,8 +1,8 @@
-.App {
-	text-align: center !important;
+.Login {
 	display: flex !important;
 	align-items: center !important;
 	flex-direction: column !important;
+	text-align: center !important;
 }
 
 .card-container {
@@ -26,17 +26,30 @@
 	cursor: pointer;
 }
 
+.login-form {
+	display: inline-table !important;
+	width: 25% !important;
+	margin-left: 34em;
+	margin-top: 8em !important;
+	align-items: center !important;
+	text-align: center !important;
+}
+
 .Events {
 	display: flex !important;
 	border-collapse: collapse !important;
 	text-align: center !important;
 	height: auto !important;
-	margin: 30px 10px 10px 25px !important;
+	margin: 30px 10px 10px 67px !important;
 	float: left !important;
 	display: flow-root !important;
-	width: 90% !important;
+	width: 85% !important;
 	align-items: center !important;
 	outline: thick outset #27dfd3 !important;
+}
+
+.border {
+	border: 10px solid teal;
 }
 
 .Gifts {

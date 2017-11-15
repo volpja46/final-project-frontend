@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import '../App.css';
 
 const FixedMenu = () => (
-	<Menu fixed="top" size="large">
+	<Menu fixed="top" size="massive">
 		<Container>
 			<Menu.Item as="a" active>
 				Home
@@ -60,39 +60,34 @@ class Navbar extends Component {
 					onBottomVisible={this.hideFixedMenu}
 					once={false}
 				>
-					<Container>
-						<Menu color={'teal'} inverted widths={4}>
-							<Menu.Item onClick={this.handleHome} as="a" active>
-								Home
-							</Menu.Item>
-							<Menu.Item>
-								<Button color="teal" onClick={this.handleProfile} as="a">
-									Profile
-								</Button>
-							</Menu.Item>
-							<Menu.Item>
-								<Button
-									color="teal"
-									onClick={this.handleEvents}
-									as="a"
-									style={{ marginLeft: '0.75em' }}
-								>
-									Upcoming Celebrations
-								</Button>
-							</Menu.Item>
-
-							<Menu.Item>
-								<Button
-									color="teal"
-									onClick={this.handleLogOut}
-									as="a"
-									style={{ marginLeft: '0.75em' }}
-								>
-									Log out
-								</Button>
-							</Menu.Item>
-						</Menu>
-					</Container>
+					<Menu size="medium" color={'teal'} inverted secondary>
+						<Menu.Item width={2}>
+							<img src="/logo.png" />
+						</Menu.Item>
+						<Menu.Item width={4} onClick={this.handleHome} as="a" active>
+							Home
+						</Menu.Item>
+						<Menu.Item>
+							<Button
+								width={4}
+								color="teal"
+								onClick={this.handleProfile}
+								as="a"
+							>
+								Profile
+							</Button>
+						</Menu.Item>
+						<Menu.Item>
+							<Button width={4} color="teal" onClick={this.handleEvents} as="a">
+								Upcoming Celebrations
+							</Button>
+						</Menu.Item>
+						<Menu.Item position="right">
+							<Button color="teal" onClick={this.handleLogOut} as="a">
+								Log out
+							</Button>
+						</Menu.Item>
+					</Menu>
 				</Visibility>
 			</div>
 		);

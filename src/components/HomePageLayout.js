@@ -6,16 +6,12 @@ import {
 	Icon,
 	Menu,
 	Segment,
-	Visibility
+	Visibility,
+	Image
 } from 'semantic-ui-react';
 
 const FixedMenu = () => (
-	<Menu
-		fixed="absolute"
-		style={{
-			width: '100%'
-		}}
-	>
+	<Menu size="medium">
 		<Container>
 			<Menu.Item as="a" active>
 				Home
@@ -50,9 +46,10 @@ export default class HomePageLayout extends Component {
 
 	hideFixedMenu = () => this.setState({ visible: false });
 	showFixedMenu = () => this.setState({ visible: true });
-
 	render() {
 		const { visible } = this.state;
+
+		let image = require(`../images/img.jpeg`);
 
 		return (
 			<div
@@ -66,59 +63,54 @@ export default class HomePageLayout extends Component {
 					onBottomVisible={this.hideFixedMenu}
 					once={false}
 				>
-					<Container>
-						<Menu
-							attached="top"
-							color={'teal'}
-							style={{
-								width: '100%'
-							}}
-							inverted
-							widths={3}
+					<Menu
+						size="medium"
+						attached="top"
+						color={'teal'}
+						style={{
+							width: '100%'
+						}}
+						inverted
+						widths={4}
+					>
+						<Menu.Item as="a" active>
+							Home
+						</Menu.Item>
+						<Menu.Item position="right">
+							<Button color="teal" onClick={this.handleLogin} as="a">
+								Log in
+							</Button>
+							<Button
+								color="teal"
+								onClick={this.handleSignUp}
+								as="a"
+								style={{ marginLeft: '0.75em' }}
+							>
+								Sign Up
+							</Button>
+						</Menu.Item>
+					</Menu>
+					<Container
+						style={{ marginTop: '7em' }}
+						className="Login"
+						centered
+						text
+					>
+						<Button
+							style={{ marginBottom: '0em' }}
+							onClick={this.handleLogin}
+							outline="thick outset"
+							size="large"
+							color="teal"
 						>
-							<Menu.Item as="a" active>
-								Home
-							</Menu.Item>
-							<Menu.Item position="right">
-								<Button color="teal" onClick={this.handleLogin} as="a">
-									Log in
-								</Button>
-								<Button
-									color="teal"
-									onClick={this.handleSignUp}
-									as="a"
-									style={{ marginLeft: '0.75em' }}
-								>
-									Sign Up
-								</Button>
-							</Menu.Item>
-						</Menu>
-					</Container>
-
-					<Container centered text>
-						<Header
-							as="h1"
-							color="black"
-							content="Gift Organizer"
-							inverted
-							style={{
-								color: 'black',
-								fontSize: '4em',
-								fontWeight: 'normal',
-								marginBottom: 0,
-								marginTop: '3em',
-								textAlign: 'center'
-							}}
-						/>
-						<Header
-							as="h2"
-							content="Keep track of your gifts"
-							inverted
-							style={{ fontSize: '1.7em', fontWeight: 'normal' }}
-						/>
-						<Button onClick={this.handleSignUp} size="huge" color="teal">
-							Get Started
-							<Icon name="right arrow" />
+							<Image
+								className="border"
+								src={image}
+								outline="thick outset"
+								size="massive"
+								centered
+							/>
+							<Icon size="large" name="heart" />
 						</Button>
 					</Container>
 				</Visibility>

@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 
 const Profile = props => {
 	return (
-		<div style={{ marginTop: '7em', color: 'teal' }}>
+		<div className="Login" style={{ marginTop: '7em', color: 'teal' }}>
 			<Navbar />
 			<h1>
 				<center>Welcome, {props.username}</center>

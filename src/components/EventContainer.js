@@ -70,7 +70,7 @@ class EventContainer extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="Login">
 				<Navbar />
 				<Grid
 					style={{ height: '50%', marginTop: '7em', marginLeft: '0.50em' }}

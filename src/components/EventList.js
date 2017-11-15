@@ -20,7 +20,9 @@ const EventList = props => {
 
 	return eventTable.length > 0 ? (
 		<Container>
-			<h1>All your upcoming celebrations:</h1>
+			<h1>
+				<center>All your upcoming celebrations:</center>
+			</h1>
 			{eventTable}
 		</Container>
 	) : (
@@ -29,7 +31,9 @@ const EventList = props => {
 			verticalAlign="middle"
 			textAlign="center"
 		>
-			<h1>You haven't logged any events yet</h1>
+			<center>
+				<h1>You haven't logged any events yet</h1>
+			</center>
 		</Grid>
 	);
 };

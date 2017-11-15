@@ -43,7 +43,6 @@ class LoginForm extends React.Component {
 	render() {
 		return (
 			<div
-				padded="very"
 				className="login-form"
 				style={{ backgroundColor: 'white', marginTop: '18em' }}
 			>
@@ -58,8 +57,8 @@ class LoginForm extends React.Component {
 					<Image src="/logo.png" />
 					<center>Login to your account</center>
 				</Header>
-				<Form size="massive">
-					<Segment padded>
+				<Form size="medium">
+					<Segment>
 						<Form.Input
 							onChange={this.handleUsernameChange}
 							fluid
@@ -91,5 +90,4 @@ class LoginForm extends React.Component {
 		);
 	}
 }
-
 export default withRouter(connect(null, { loginUser })(LoginForm));

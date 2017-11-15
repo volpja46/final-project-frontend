@@ -119,9 +119,9 @@ class Present extends React.Component {
 				<div className="card">
 					<p>
 						{this.props.presentData.purchased ? (
-							<h3 style={{ color: 'teal' }}>Completed :)!</h3>
+							<h3 style={{ color: 'teal' }}>Completed</h3>
 						) : (
-							<h3 style={{ color: 'red' }}>Not yet purchased :(</h3>
+							<h3 style={{ color: 'red' }}>Not yet purchased</h3>
 						)}
 					</p>
 					<p>

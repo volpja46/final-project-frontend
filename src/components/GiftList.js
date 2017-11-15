@@ -31,7 +31,7 @@ const GiftList = props => {
 	return props.gifts.length > 0 ? (
 		<div>
 			<h1>All gifts you have logged:</h1>
-			<Container>
+			<Container style={{ color: 'black' }}>
 				<table className="ui padded inverted teal table">
 					<tbody>
 						<tr>

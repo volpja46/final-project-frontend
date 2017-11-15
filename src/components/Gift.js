@@ -76,6 +76,8 @@ class Gift extends React.Component {
 	};
 
 	render() {
+		let image = require(`../images/thankyou.png`);
+
 		return (
 			<tr>
 				<td>{this.props.giftData.date}</td>
@@ -84,9 +86,22 @@ class Gift extends React.Component {
 				<td>{this.props.giftData.for_who}</td>
 				<td>{this.props.giftData.description}</td>
 				<td>
+					<a
+						href="mailto:putyouremailhere.com?subject=Thanks!
+&body=
+Thank you so much for your thoughtful gift!"
+						style={{ color: 'black' }}
+					>
+						send a thank you
+					</a>
 					<Button
 						size="medium"
-						style={{ color: 'black', width: '7.6em', marginBottom: '.20em' }}
+						style={{
+							color: 'black',
+							width: '7.6em',
+							marginBottom: '.20em',
+							marginTop: '.20em'
+						}}
 						id={this.props.id}
 						onClick={this.props.removeGift}
 					>

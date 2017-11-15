@@ -50,6 +50,7 @@ class Navbar extends Component {
 
 	render() {
 		const { visible } = this.state;
+		// let image = require(`../images/logo.jpg`);
 
 		return (
 			<div id="navbar">
@@ -61,9 +62,7 @@ class Navbar extends Component {
 					once={false}
 				>
 					<Menu size="medium" color={'teal'} inverted secondary>
-						<Menu.Item width={2}>
-							<img src="/logo.png" />
-						</Menu.Item>
+						<Menu.Item width={2} />
 						<Menu.Item width={4} onClick={this.handleHome} as="a" active>
 							Home
 						</Menu.Item>

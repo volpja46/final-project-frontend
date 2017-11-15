@@ -6,7 +6,7 @@
 }
 
 .card-container {
-	width: 1000px !important;
+	width: 800px !important;
 	height: auto !important;
 }
 
@@ -40,10 +40,10 @@
 	border-collapse: collapse !important;
 	text-align: center !important;
 	height: auto !important;
-	margin: 30px 10px 10px 67px !important;
+	margin: 30px 50px 10px 170px !important;
 	float: left !important;
 	display: flow-root !important;
-	width: 85% !important;
+	width: 65% !important;
 	align-items: center !important;
 	outline: thick outset #27dfd3 !important;
 }

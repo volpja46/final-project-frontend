@@ -28,9 +28,9 @@
 
 .login-form {
 	display: inline-table !important;
-	width: 25% !important;
-	margin-left: 34em;
-	margin-top: 8em !important;
+	width: 22% !important;
+	margin-left: 40em;
+	margin-top: 12em !important;
 	align-items: center !important;
 	text-align: center !important;
 }
@@ -76,6 +76,7 @@
 	animation: App-logo-spin infinite 20s linear;
 	height: 80px;
 }
+
 
 .App-header {
 	background-color: #222;

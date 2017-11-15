@@ -38,12 +38,6 @@ class PresentContainer extends React.Component {
 		});
 	};
 
-	// handlePurchaseChange = (event) => {
-	//   this.setState({
-	//     purchased: event.target.value
-	//   })
-	// }
-
 	handlePriceChange = event => {
 		this.setState({
 			price: event.target.value
@@ -67,8 +61,10 @@ class PresentContainer extends React.Component {
 			return present.event_id === this.props.eventId;
 		});
 
-		const presentsTable = filteredPresents.map((present, index) => (
-			<Present
+		const clearEmptyPresents = filteredPresents.filter(present => (present.name && present.store && present.event_id !== ""))
+
+		const presentsTable = clearEmptyPresents.map((present, index) => (
+				<Present
 				key={index}
 				id={present.id}
 				eventId={this.props.eventId}

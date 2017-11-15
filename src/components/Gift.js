@@ -88,8 +88,7 @@ class Gift extends React.Component {
 				<td>
 					<a
 						href="mailto:putyouremailhere.com?subject=Thanks!
-&body=
-Thank you so much for your thoughtful gift!"
+&body=Thank you so much for your thoughtful gift!"
 						style={{ color: 'black' }}
 					>
 						send a thank you
@@ -133,9 +132,9 @@ Thank you so much for your thoughtful gift!"
 						/>
 						<Modal.Content>
 							<Grid
-								style={{ height: '100%', marginTop: '1em', color: 'black' }}
+								style={{ height: '100%', marginTop: '1em'}}
 								verticalAlign="middle"
-								textAlign="center"
+								textAlign="center" color='black'
 							>
 								<Segment padded centered>
 									<Form onSubmit={this.props.handleSubmit}>
@@ -183,7 +182,7 @@ Thank you so much for your thoughtful gift!"
 												className="ui black fluid button"
 											>
 												Submit
-											</Button>{' '}
+											</Button>
 										</center>
 									</Form>
 								</Segment>
@@ -197,6 +196,7 @@ Thank you so much for your thoughtful gift!"
 }
 
 const mapStateToProps = state => {
+	debugger
 	return {
 		gifts: state.gifts.gifts,
 		user_id: state.users.user_id

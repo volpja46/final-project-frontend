@@ -6,10 +6,8 @@ import HomePageLayout from './components/HomePageLayout';
 import SignUpForm from './components/SignUpForm';
 import './App.css';
 import EventContainer from './components/EventContainer';
-// import HTML5Backend from 'react-dnd-html5-backend';
-// import PresentColumn from './components/PresentColumn';
-// import { connect } from 'react-redux';
-// import { DragDropContext } from 'react-dnd';
+import 'semantic-ui-css/semantic.min.css'
+
 
 const App = props => {
 	return (

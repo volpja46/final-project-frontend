@@ -66,6 +66,7 @@ class GiftContainer extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
+		debugger
 		let newGift = {
 			name: this.state.name,
 			description: this.state.description,
@@ -89,6 +90,7 @@ class GiftContainer extends React.Component {
 					style={{ height: '100%', marginTop: '1em' }}
 					verticalAlign="middle"
 					textAlign="center"
+					color='black'
 				>
 					<SearchBar
 						SearchTerm={this.state.filter}

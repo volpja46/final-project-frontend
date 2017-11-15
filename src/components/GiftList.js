@@ -19,7 +19,8 @@ const GiftList = props => {
 			);
 		}) || props.gifts;
 
-	const giftTable = filteredSearchableGifts.map((gift, index) => (
+		const clearEmptyGifts = filteredSearchableGifts.filter(gift => (gift.name && gift.for_who && gift.occasion !== ""))
+		const giftTable = clearEmptyGifts.map((gift, index) => (
 		<Gift
 			key={index}
 			id={gift.id}
@@ -32,7 +33,7 @@ const GiftList = props => {
 		<div>
 			<h1>All gifts you have logged:</h1>
 			<Container style={{ color: 'black' }}>
-				<table className="ui padded inverted teal table">
+				<table style={{color:'black'}}className="ui padded inverted teal table">
 					<tbody>
 						<tr>
 							<Table.HeaderCell className="aligned header" width={2}>

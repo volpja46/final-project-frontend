@@ -32,7 +32,6 @@ class LoginForm extends React.Component {
 
 	handleLogin = () => {
 		this.props.loginUser(this.state.username, this.state.password);
-		console.log(this.props);
 		this.redirect();
 	};
 
@@ -43,9 +42,7 @@ class LoginForm extends React.Component {
 	render() {
 		return (
 			<div
-				className="login-form"
-				style={{ backgroundColor: 'white', marginTop: '18em' }}
-			>
+				className="login-form">
 				<style>{`
         body > div,
         body > div > div,

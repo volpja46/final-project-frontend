@@ -19,7 +19,6 @@ class AddEventModal extends React.Component {
 			date: this.props.date,
 			type_of_celebration: this.props.type_of_celebration,
 			budget: this.props.budget,
-			showPresents: false,
 			modalOpen: false
 		};
 	}
@@ -30,6 +29,7 @@ class AddEventModal extends React.Component {
 		this.setState({
 			modalOpen: false
 		});
+		debugger
 		this.props.handleSubmit(event);
 	};
 
@@ -59,15 +59,15 @@ class AddEventModal extends React.Component {
 						verticalAlign="middle"
 						textAlign="center"
 					>
-						<Segment padded color="black" centered>
+						<Segment centered>
 							<Header
 								style={{ textAlign: 'center', marginTop: '.05 em' }}
 								as="h2"
 								color="teal"
-								content="Add a new Event"
+								content="Add a new event"
 								className="fluid"
 							/>
-							<Form style={{ color: 'black' }}>
+							<Form style={{width:'250px'}} >
 								<Form.Group>
 									<Form.Input
 										onChange={this.props.handletypeOfCelebrationChange}

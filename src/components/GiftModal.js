@@ -52,13 +52,6 @@ class GiftModal extends React.Component {
 				basic
 				closeIcon
 			>
-				<Header
-					icon="gift"
-					align="center"
-					size="huge"
-					color="teal"
-					content="Log a new gift"
-				/>
 				<Modal.Content>
 					<Grid
 						style={{ height: '100%', marginTop: '1em', color: 'black' }}
@@ -116,7 +109,7 @@ class GiftModal extends React.Component {
 										className="ui black fluid button"
 									>
 										Submit
-									</Button>{' '}
+									</Button>
 								</center>
 							</Form>
 						</Segment>

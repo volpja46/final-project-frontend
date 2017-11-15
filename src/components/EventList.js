@@ -9,7 +9,9 @@ const EventList = props => {
 		return event.user_id === props.user_id;
 	});
 
-	const eventTable = filteredEvents.map((event, index) => (
+	const clearEmptyEvents = filteredEvents.filter(event => (event.name && event.budget && event.type_of_celebration !== ""))
+
+	const eventTable = clearEmptyEvents.map((event, index) => (
 		<Event
 			key={index}
 			id={event.id}

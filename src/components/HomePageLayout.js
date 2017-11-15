@@ -54,7 +54,8 @@ export default class HomePageLayout extends Component {
 		return (
 			<div
 				style={{
-					width: '100%'
+					width: '100%',
+					color:'black'
 				}}
 			>
 				{visible ? <FixedMenu /> : null}

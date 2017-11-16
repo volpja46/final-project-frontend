@@ -1,10 +1,8 @@
 import React from 'react';
 import '../App.css';
-import AddPresentModal from './AddPresentModal';
 import { connect } from 'react-redux';
 import { addPresent } from '../actions/presents';
 import Present from './Present';
-import { Button, Container, Grid, Modal } from 'semantic-ui-react';
 
 class PresentContainer extends React.Component {
 	constructor(props) {
@@ -73,12 +71,12 @@ class PresentContainer extends React.Component {
 		));
 		return presentsTable.length > 0 ? (
 			<div style={{ marginTop: '3em' }}>
-				<h1>Gift ideas</h1>
+				<h1 className="Pacifico">Your gift ideas:</h1>
 				{presentsTable}
 			</div>
 		) : (
-			<div style={{ marginTop: '3em' }}>
-				<h1>You havent added any gift ideas yet</h1>
+			<div style={{ marginTop: '3em', marginBottom:'0.5em' }}>
+				<h1 className="Pacifico">You have not added any gift ideas yet</h1>
 				{presentsTable}
 			</div>
 		);

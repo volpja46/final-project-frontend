@@ -6,12 +6,9 @@ import {
 	Form,
 	Grid,
 	Modal,
-	Checkbox
 } from 'semantic-ui-react';
-import GiftModal from './GiftModal';
 import { editThePresent } from '../actions/presents';
 import { connect } from 'react-redux';
-import AddPresentModal from './AddPresentModal';
 import '../App.css';
 import { removeThePresent } from '../actions/presents';
 

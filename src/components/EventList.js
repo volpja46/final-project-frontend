@@ -1,6 +1,6 @@
 import React from 'react';
 import Event from './Event';
-import { Table, Container, Grid, Header } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 import '../App.css';
 import { connect } from 'react-redux';
 

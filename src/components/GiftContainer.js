@@ -1,6 +1,5 @@
 import React from 'react';
 import GiftList from './GiftList';
-import SearchBar from './Search';
 import { Grid } from 'semantic-ui-react';
 import '../App.css';
 import GiftModal from './GiftModal';
@@ -66,7 +65,6 @@ class GiftContainer extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-		debugger
 		let newGift = {
 			name: this.state.name,
 			description: this.state.description,
@@ -92,7 +90,6 @@ class GiftContainer extends React.Component {
 					textAlign="center"
 					color='black'
 				>
-
 					<GiftList
 						searchTerm={this.state.searchTerm}
 						gifts={this.props.gifts}

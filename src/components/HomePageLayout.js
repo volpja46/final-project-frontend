@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import {
 	Button,
 	Container,
-	Header,
 	Icon,
 	Menu,
-	Segment,
 	Visibility,
 	Image
 } from 'semantic-ui-react';

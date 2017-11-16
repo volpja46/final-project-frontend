@@ -1,13 +1,11 @@
 import React from 'react';
 import { Button, Header, Segment, Form, Grid, Modal } from 'semantic-ui-react';
-import GiftModal from './GiftModal';
 import { editTheEvent } from '../actions/events';
 import { connect } from 'react-redux';
 import AddPresentModal from './AddPresentModal';
 import '../App.css';
 import PresentContainer from './PresentContainer';
 import moment from 'moment';
-import FontAwesome from 'react-fontawesome';
 
 class Event extends React.Component {
 	constructor(props) {
@@ -111,6 +109,7 @@ class Event extends React.Component {
 			<div><i class="fa fa-gift fa-spin fa-3x" aria-hidden="true" style={{marginTop:'0.3em'}}></i>
 			<i class="fa fa-gift fa-spin fa-3x" aria-hidden="true"></i>
 			<i class="fa fa-gift fa-spin fa-3x" aria-hidden="true"></i></div>
+				<h1>{this.getDate()}</h1>
 				<h2 className="Oxygen">
 					<b>You have ${this.moneyInBudget()}</b> left in your budget
 				</h2>
@@ -219,7 +218,7 @@ class Event extends React.Component {
 			<i class="fa fa-gift fa-spin fa-3x" aria-hidden="true"></i>
 			<i class="fa fa-gift fa-spin fa-3x" aria-hidden="true"></i></div>
 				<h1>{this.getDate()}</h1>
-				<h2 style={{ color: 'red' }}>
+				<h2 className="Oxygen" style={{ color: 'red' }}>
 					You went over your budget by ${this.moneyInBudget()}
 				</h2>
 				<p>

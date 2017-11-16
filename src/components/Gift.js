@@ -77,7 +77,6 @@ class Gift extends React.Component {
 	};
 
 	render() {
-		let image = require(`../images/thankyou.png`);
 
 		return (
 			<tr style={{color:'black'}}>
@@ -200,7 +199,6 @@ class Gift extends React.Component {
 }
 
 const mapStateToProps = state => {
-	debugger
 	return {
 		gifts: state.gifts.gifts,
 		user_id: state.users.user_id

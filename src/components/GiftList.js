@@ -38,7 +38,7 @@ const GiftList = props => {
 				<table className="ui very padded striped teal table">
 					<tbody>
 						<tr>
-							<Table.HeaderCell className="border-teal" className="aligned header" width={2}>
+							<Table.HeaderCell className="aligned header" width={2}>
 								Date
 							</Table.HeaderCell>
 							<Table.HeaderCell

@@ -60,7 +60,7 @@ class SignUpForm extends React.Component {
 
 	render() {
 		return (
-			<div style={{ marginTop: '15em' }}>
+			<div className="login-form" style={{ marginTop: '15em' }}>
 				<style>{`
         body > div,
         body > div > div,

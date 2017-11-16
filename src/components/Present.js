@@ -121,7 +121,7 @@ class Present extends React.Component {
 						{this.props.presentData.purchased ? (
 							<h3 style={{ color: 'teal' }}>Completed</h3>
 						) : (
-							<h3 style={{ color: 'red' }}>Not yet purchased</h3>
+							<h3>Not yet purchased</h3>
 						)}
 					</p>
 					<p>
@@ -148,7 +148,6 @@ class Present extends React.Component {
 							type="checkbox"
 							checked={this.state.purchased}
 							style={{
-								color: 'teal',
 								textAlign: 'center',
 								marginRight: '0.4em',
 								cursor: 'pointer',
@@ -160,20 +159,6 @@ class Present extends React.Component {
 						/>
 						<b>has this been purchased?</b>
 					</label>
-					<Button
-						size="medium"
-						color="teal"
-						style={{
-							color: 'white',
-							width: '7.6em',
-							marginBottom: '.40em',
-							marginTop: '.50em'
-						}}
-						id={this.props.id}
-						onClick={this.handleRemove}
-					>
-						delete gift
-					</Button>
 					<Modal
 						style={{ display: 'block' }}
 						size="small"
@@ -182,10 +167,10 @@ class Present extends React.Component {
 								onClick={this.handleOpen}
 								color="teal"
 								size="medium"
-								style={{ color: 'white', width: '7.6em' }}
+								style={{ color: 'black', width: '7.6em', marginTop: '.40em'}}
 								id={this.props.id}
 							>
-								update gift
+							edit gift
 							</Button>
 						}
 						open={this.state.modalOpen}
@@ -253,6 +238,19 @@ class Present extends React.Component {
 							</Grid>
 						</Modal.Content>
 					</Modal>
+					<Button
+						size="medium"
+						color="teal"
+						style={{
+							color: 'black',
+							width: '7.6em',
+							marginTop: '0.2em'
+						}}
+						id={this.props.id}
+						onClick={this.handleRemove}
+					>
+						delete gift
+					</Button>
 				</div>
 			</div>
 		);

@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Header, Segment, Form, Grid, Modal } from 'semantic-ui-react';
 import { editTheGift } from '../actions/gifts';
 import { connect } from 'react-redux';
+import '../App.css'
 
 class Gift extends React.Component {
 	constructor(props) {
@@ -79,7 +80,7 @@ class Gift extends React.Component {
 		let image = require(`../images/thankyou.png`);
 
 		return (
-			<tr>
+			<tr style={{color:'black'}}>
 				<td>{this.props.giftData.date}</td>
 				<td>{this.props.giftData.name}</td>
 				<td>{this.props.giftData.occasion}</td>
@@ -91,30 +92,17 @@ class Gift extends React.Component {
 &body=Thank you so much for your thoughtful gift!"
 						style={{ color: 'black' }}
 					>
-						send a thank you
+					send a thank you
 					</a>
-					<Button
-						size="medium"
-						style={{
-							color: 'black',
-							width: '7.6em',
-							marginBottom: '.20em',
-							marginTop: '.20em'
-						}}
-						id={this.props.id}
-						onClick={this.props.removeGift}
-					>
-						delete gift
-					</Button>
 					<Modal
-						style={{ display: 'block' }}
-						size="small"
+					size="small"
 						trigger={
 							<Button
 								onClick={this.handleOpen}
 								size="medium"
-								style={{ color: 'black', width: '7.6em' }}
 								id={this.props.id}
+								style={{ marginLeft:'.6em', marginTop: '0.1em', color:'black', width: '7.6em'}}
+								color="teal"
 							>
 								edit gift
 							</Button>
@@ -189,6 +177,22 @@ class Gift extends React.Component {
 							</Grid>
 						</Modal.Content>
 					</Modal>
+					<Button
+					class="ui teal button"
+						size="medium"
+						color="white"
+						style={{
+							color: 'black',
+							width: '7.6em',
+							marginBottom: '.20em',
+							marginTop: '.20em',
+							marginLeft:'.6em'
+						}}
+						id={this.props.id}
+						onClick={this.props.removeGift}
+					>
+						delete gift
+					</Button>
 				</td>
 			</tr>
 		);

@@ -29,7 +29,6 @@ class AddEventModal extends React.Component {
 		this.setState({
 			modalOpen: false
 		});
-		debugger
 		this.props.handleSubmit(event);
 	};
 
@@ -41,7 +40,7 @@ class AddEventModal extends React.Component {
 					<Button
 						onClick={this.handleOpen}
 						size="big"
-						style={{ marginTop: '3em', marginBottom: '3em' }}
+						style={{ marginTop: '3em', color:'black',marginBottom: '3em' }}
 						color="teal"
 					>
 						Add a new event

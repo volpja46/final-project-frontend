@@ -92,10 +92,7 @@ class GiftContainer extends React.Component {
 					textAlign="center"
 					color='black'
 				>
-					<SearchBar
-						SearchTerm={this.state.filter}
-						handleSearchChange={this.handleSearchChange}
-					/>
+
 					<GiftList
 						searchTerm={this.state.searchTerm}
 						gifts={this.props.gifts}

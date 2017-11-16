@@ -41,7 +41,7 @@ class GiftModal extends React.Component {
 					<Button
 						onClick={this.handleOpen}
 						size="big"
-						style={{ marginTop: '3em', marginBottom: '3em' }}
+						style={{ marginTop: '3em', color:'black', marginBottom: '3em' }}
 						color="teal"
 					>
 						Add a new gift to your collection <Icon name="gift" />

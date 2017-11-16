@@ -63,8 +63,17 @@ class AddPresentModal extends React.Component {
 			priority: this.state.priority,
 			purchased: this.state.purchased
 		};
-		this.props.addPresent(newPresent);
-	};
+		this.props.addPresent(newPresent)
+		this.setState({
+				name: '',
+				event_id: this.props.eventId,
+				store: '',
+				priority: '',
+				price: '',
+				purchased: false,
+				modalOpen: false
+		})
+	}
 
 	handleOpen = () => {
 		this.setState({
@@ -74,7 +83,6 @@ class AddPresentModal extends React.Component {
 
 	render() {
 		return (
-			<div>
 				<Modal
 					style={{ display: 'block' }}
 					size="small"
@@ -84,10 +92,10 @@ class AddPresentModal extends React.Component {
 							color="teal"
 							onClick={this.handleOpen}
 							size="medium"
-							style={{ color: 'white', width: '7.6em' }}
+							style={{ color: 'black', width: '7.6em' }}
 							id={this.props.id}
 						>
-							add a gift for this event
+							add a new gift
 						</Button>
 					}
 					open={this.state.modalOpen}
@@ -155,7 +163,6 @@ class AddPresentModal extends React.Component {
 						</Grid>
 					</Modal.Content>
 				</Modal>
-			</div>
 		);
 	}
 }

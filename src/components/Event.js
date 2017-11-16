@@ -7,6 +7,7 @@ import AddPresentModal from './AddPresentModal';
 import '../App.css';
 import PresentContainer from './PresentContainer';
 import moment from 'moment';
+import FontAwesome from 'react-fontawesome';
 
 class Event extends React.Component {
 	constructor(props) {
@@ -98,8 +99,19 @@ class Event extends React.Component {
 	render() {
 		return this.moneyInBudget() > 0 ? (
 			<div className="Events">
-				<h1>{this.getDate()}</h1>
-				<h2>
+			<div><Button
+				color="grey"
+				size="medium"
+				style={{ color: 'black', width: '3.5em', marginLeft:'42em', marginTop:'1em'}}
+				id={this.props.id}
+				onClick={this.props.handleRemove}
+			>
+				x
+			</Button></div>
+			<div><i class="fa fa-gift fa-spin fa-3x" aria-hidden="true" style={{marginTop:'0.3em'}}></i>
+			<i class="fa fa-gift fa-spin fa-3x" aria-hidden="true"></i>
+			<i class="fa fa-gift fa-spin fa-3x" aria-hidden="true"></i></div>
+				<h2 className="Oxygen">
 					<b>You have ${this.moneyInBudget()}</b> left in your budget
 				</h2>
 				<p>
@@ -114,16 +126,7 @@ class Event extends React.Component {
 				<p>
 					<b>Budget:</b> ${this.props.eventData.budget}
 				</p>
-				<Button
-					color="teal"
-					size="medium"
-					style={{ color: 'white', width: '7.6em', marginBottom: '.20em' }}
-					id={this.props.id}
-					onClick={this.props.handleRemove}
-				>
-					delete event
-				</Button>
-				<Modal
+				<div><Modal
 					style={{ display: 'block' }}
 					size="small"
 					trigger={
@@ -131,7 +134,7 @@ class Event extends React.Component {
 							onClick={this.handleOpen}
 							size="medium"
 							color="teal"
-							style={{ color: 'white', width: '7.6em' }}
+							style={{ color: 'black', width: '7.6em' }}
 							id={this.props.id}
 						>
 							edit event details
@@ -151,7 +154,7 @@ class Event extends React.Component {
 					/>
 					<Modal.Content>
 						<Grid
-							style={{ height: '100%', marginTop: '1em', color: 'white' }}
+							style={{ height: '100%', marginTop: '1em', color: 'black' }}
 							verticalAlign="middle"
 							textAlign="center"
 						>
@@ -198,11 +201,23 @@ class Event extends React.Component {
 						</Grid>
 					</Modal.Content>
 				</Modal>
-				<AddPresentModal eventId={this.props.id} />
+				<AddPresentModal eventId={this.props.id} /></div>
 				<PresentContainer eventId={this.props.id} />
 			</div>
 		) : (
 			<div className="Events">
+			<div><Button
+				color="grey"
+				size="medium"
+				style={{ color: 'black', width: '3.5em', marginLeft:'42em', marginTop:'1em'}}
+				id={this.props.id}
+				onClick={this.props.handleRemove}
+			>
+				x
+			</Button></div>
+			<div><i class="fa fa-gift fa-spin fa-3x" aria-hidden="true" style={{marginTop:'0.3em'}}></i>
+			<i class="fa fa-gift fa-spin fa-3x" aria-hidden="true"></i>
+			<i class="fa fa-gift fa-spin fa-3x" aria-hidden="true"></i></div>
 				<h1>{this.getDate()}</h1>
 				<h2 style={{ color: 'red' }}>
 					You went over your budget by ${this.moneyInBudget()}
@@ -219,15 +234,7 @@ class Event extends React.Component {
 				<p>
 					<b>Budget:</b> ${this.props.eventData.budget}
 				</p>
-				<Button
-					color="teal"
-					size="medium"
-					style={{ color: 'white', width: '7.6em', marginBottom: '.20em' }}
-					id={this.props.id}
-					onClick={this.props.handleRemove}
-				>
-					delete event
-				</Button>
+				<div><AddPresentModal eventId={this.props.id} />
 				<Modal
 					style={{ display: 'block' }}
 					size="small"
@@ -236,7 +243,7 @@ class Event extends React.Component {
 							onClick={this.handleOpen}
 							size="medium"
 							color="teal"
-							style={{ color: 'white', width: '7.6em' }}
+							style={{ color: 'black', width: '7.6em' }}
 							id={this.props.id}
 						>
 							edit event details
@@ -256,7 +263,7 @@ class Event extends React.Component {
 					/>
 					<Modal.Content>
 						<Grid
-							style={{ height: '100%', marginTop: '1em', color: 'white' }}
+							style={{ height: '100%', marginTop: '1em', color: 'black' }}
 							verticalAlign="middle"
 							textAlign="center"
 						>
@@ -303,8 +310,8 @@ class Event extends React.Component {
 						</Grid>
 					</Modal.Content>
 				</Modal>
-				<AddPresentModal eventId={this.props.id} />
 				<PresentContainer eventId={this.props.id} />
+				</div>
 			</div>
 		);
 	}

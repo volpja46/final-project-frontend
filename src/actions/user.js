@@ -9,7 +9,10 @@ export function loginUser(username, password) {
       body: JSON.stringify({ user: {username, password} })
     })
     .then(response => response.json())
-    .then(userData => dispatch(setCurrentUser(userData)))
+    .then(userData => {
+      localStorage.setItem('token', userData.jwt)
+      dispatch(setCurrentUser(userData))
+    })
   }
 }
 
@@ -24,7 +27,10 @@ export function signUpUser(username, password) {
       body: JSON.stringify({ user: {username, password} })
     })
     .then(response => response.json())
-    .then(userData => dispatch(setCurrentUser(userData)))
+    .then(userData => {
+      localStorage.setItem('token', userData.jwt)
+      dispatch(setCurrentUser(userData))
+    })
   }
 }
 

@@ -11,6 +11,7 @@ import {
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/user';
+import '../App.css'
 
 class LoginForm extends React.Component {
 	state = {
@@ -71,7 +72,7 @@ class LoginForm extends React.Component {
 							placeholder="Password"
 							type="password"
 						/>
-						<Button onClick={this.handleLogin} color="teal" fluid size="large">
+						<Button onClick={this.handleLogin} style={{color:'black'}} color="teal" fluid size="large">
 							Login
 						</Button>
 					</Segment>

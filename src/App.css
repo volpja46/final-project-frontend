@@ -3,6 +3,10 @@
 	align-items: center !important;
 	flex-direction: column !important;
 	text-align: center !important;
+	font-size: 16px;
+	font-family: "Open Sans";
+	color: 'black' !important;
+	text-emphasis: bold;
 }
 
 .card-container {
@@ -16,6 +20,20 @@
 	width: 200px;
 	margin: 20px;
 	text-align: left !important;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Lora|Noto+Sans|Open+Sans|Oxygen|Pacifico');
+
+.Oxygen {
+	font-family: "Oxygen", sans-serif;
+	font-size: 30px;
+}
+.Lora {
+	font-family: 'Lora', sans-serif;
+}
+.Pacifico {
+font-family: 'Pacifico', sans-serif;
+font-size: 35px;
 }
 
 .checkbox-custom,
@@ -33,6 +51,8 @@
 	margin-top: 12em !important;
 	align-items: center !important;
 	text-align: center !important;
+	color: 'black' !important;
+	font-family: 'Nora', sans-serif !important;
 }
 
 .Events {
@@ -49,7 +69,11 @@
 }
 
 .border {
-	border: 10px solid teal;
+	border: 1px solid teal;
+}
+
+.border-teal {
+	border: 2px solid teal important;
 }
 
 .Gifts {
@@ -62,7 +86,6 @@
 	margin: 0px 20px 25px 5px !important;
 	borderradius: 5px !important;
 	padding: 5px !important;
-	/*overflow: hidden !important;*/
 	text-overflow: ellipsis !important;
 }
 
@@ -71,12 +94,13 @@
 	top: 0px;
 	left: 5px;
 	width: 100%;
+	text: black;
 }
+
 .App-logo {
 	animation: App-logo-spin infinite 20s linear;
 	height: 80px;
 }
-
 
 .App-header {
 	background-color: #222;

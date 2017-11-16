@@ -54,8 +54,7 @@ export default class HomePageLayout extends Component {
 		return (
 			<div
 				style={{
-					width: '100%',
-					color:'black'
+					width: '100%'
 				}}
 			>
 				{visible ? <FixedMenu /> : null}
@@ -111,7 +110,7 @@ export default class HomePageLayout extends Component {
 								size="massive"
 								centered
 							/>
-							<Icon size="large" name="heart" />
+							<Icon size="large" name="heart"  />
 						</Button>
 					</Container>
 				</Visibility>

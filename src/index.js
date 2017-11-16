@@ -12,6 +12,8 @@ import eventsReducer from './reducers/eventsReducer';
 import presentsReducer from './reducers/presentsReducer';
 import 'semantic-ui-css/semantic.min.css';
 import registerServiceWorker from './registerServiceWorker';
+import 'font-awesome/css/font-awesome.css';
+
 
 const rootReducer = combineReducers({
 	users: usersReducer,
